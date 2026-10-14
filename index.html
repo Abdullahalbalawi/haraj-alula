@@ -1,15 +1,17 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#33200f">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
 <title>حراج العلا</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"></noscript>
-<style id="css-rtl">
+<style id="css-base">
 :root{
   --ink:#1f120a; --bark:#33200f; --umber:#4d311c; --clay:#99683a;
   --gold:#e6bd74; --gold-deep:#b27f36; --sand:#ead3ab; --cream:#f8eedc;
@@ -110,8 +112,8 @@ h1,h2,h3,p{margin:0}
   color:var(--on-dark);background:rgba(246,226,190,.10);border:1px solid var(--line-dark)}
 .splash-cats .ic{width:1.6rem;height:1.6rem;color:var(--gold);margin-bottom:.35rem}
 .splash .sec-head{padding:1.2rem 1.4rem .6rem}
-.splash .hscroll{display:flex;overflow-x:auto;padding:0 1.4rem .4rem}
-.splash .hscroll .card{flex:0 0 10.5rem}
+.splash .hscroll{display:flex;overflow-x:auto;padding:0 1.4rem .4rem;scroll-snap-type:x mandatory;scroll-padding-inline:1.4rem;clip-path:inset(0 1.4rem)}
+.splash .hscroll .card{flex:0 0 100%;scroll-snap-align:start}
 .splash .hscroll .card.card + .card{margin-right:.75rem}
 .splash .hscroll::after{display:block;content:"";flex:0 0 1.4rem}
 .perks{display:flex;margin:1.25rem 1.4rem 0;padding:.9rem .5rem;border-radius:20px;color:var(--on-dark);
@@ -124,7 +126,7 @@ h1,h2,h3,p{margin:0}
   .splash-in{max-width:68rem;flex-direction:row;align-items:center;padding:2rem 1.5rem}
   .sp-main{flex:0 0 42%;max-width:42%;padding-top:0}
   .sp-side{flex:1;padding-top:0;margin-right:1.5rem}
-  .splash .hscroll{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:.75rem;gap:.75rem;overflow:visible;padding-bottom:0}
+  .splash .hscroll{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:.75rem;gap:.75rem;overflow:visible;padding-bottom:0;scroll-snap-type:none;clip-path:none}
   .splash .hscroll .card.card + .card{margin-right:0}
   .splash .hscroll .card:nth-child(n+4){display:none}
   .splash .hscroll::after{display:none}
@@ -189,9 +191,10 @@ h1,h2,h3,p{margin:0}
 .meta span{display:inline-flex;align-items:center;white-space:nowrap}
 .meta .ic{width:.8125rem;height:.8125rem;margin-left:.2rem}
 .grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-gap:.75rem;gap:.75rem;padding:0 var(--pad)}
-.hscroll{display:flex;overflow-x:auto;padding:0 var(--pad) .4rem;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.hscroll{display:flex;overflow-x:auto;padding:0 var(--pad) .4rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad)}
+.page-home .hscroll{clip-path:inset(0 var(--pad))}
 .hscroll::-webkit-scrollbar{display:none}
-.hscroll .card{flex:0 0 12.25rem}
+.hscroll .card{flex:0 0 100%;scroll-snap-align:start}
 .hscroll .card + .card{margin-right:.75rem}
 .hscroll::after{content:"";flex:0 0 var(--pad)}
 .list{display:grid;grid-template-columns:minmax(0,1fr);grid-gap:.75rem;gap:.75rem;padding:0 var(--pad)}
@@ -468,7 +471,8 @@ button.seller{width:100%;text-align:right}
 @media (min-width:768px){
   :root{--pad:1.5rem}
   .hero{height:13rem} .hero-text h2{font-size:2.25rem} .hero-text p{font-size:1.0625rem}
-  .hscroll{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:.9rem;gap:.9rem;overflow:visible;padding-bottom:0}
+  .hscroll{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:.9rem;gap:.9rem;overflow:visible;padding-bottom:0;scroll-snap-type:none}
+  .page-home .hscroll{clip-path:none}
   .hscroll::after{display:none}
   .hscroll .card + .card{margin-right:0}
   .grid2{grid-gap:.9rem;gap:.9rem}
@@ -584,588 +588,129 @@ button,.card,.chip,.pill{transition:background-color .15s,color .15s,border-colo
 .photo .art span{position:absolute;bottom:.5rem;inset-inline-end:.6rem;padding:.05rem .5rem;border-radius:999px;background:rgba(255,250,240,.7);color:#5a3a1e;font-size:max(.75rem,12px)}
 .actions .btn-sq{flex:0 0 auto;width:3.1rem;min-width:44px;padding:0}
 .actions .btn-sq .ic{margin:0}
+.biz-tag{display:inline-block;align-self:flex-start;margin:.15rem 0 .1rem;padding:.05rem .55rem;border-radius:999px;background:rgba(230,189,116,.16);color:var(--gold);font-size:max(.75rem,12px);font-weight:700}
+.me small + small{margin-top:.15rem}
 </style>
 <style id="css-ltr" media="not all">
-:root{
-  --ink:#1f120a; --bark:#33200f; --umber:#4d311c; --clay:#99683a;
-  --gold:#e6bd74; --gold-deep:#b27f36; --sand:#ead3ab; --cream:#f8eedc;
-  --ember:#b0501a; --palm:#5d6a37;
-  --on-dark:#f7ead3; --on-dark-muted:#d6bf9e;
-  --on-light:#2a190e; --on-light-muted:#6a513a;
-  --line-dark:rgba(246,226,190,.18); --line-light:rgba(74,46,27,.14);
-  --pad:1rem;
-  --font:"Tajawal",system-ui,"Segoe UI",Tahoma,sans-serif;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --ink:#1f120a; --bark:#33200f; } }
-:root[data-theme="dark"]{ --ink:#1f120a; --bark:#33200f; }
-*,*::before,*::after{box-sizing:inherit}
-html{height:100%;font-size:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
-@media (max-width:379px){html{font-size:93.75%} :root{--pad:.8rem}}
-@media (max-width:339px){html{font-size:87.5%} :root{--pad:.7rem}}
-/* الشاشات الكبيرة جدًا: تكبير متناسب حتى لا يبدو المحتوى صغيرًا */
-@media (min-width:1800px) and (min-height:900px){html{font-size:112.5%}}
-@media (min-width:2400px) and (min-height:1200px){html{font-size:131.25%}}
-body{height:100%;margin:0;background:var(--ink);color:var(--on-dark);font-family:var(--font);font-size:.9375rem;line-height:1.55;-webkit-font-smoothing:antialiased}
-button,input,select,textarea{font:inherit;color:inherit}
-/* 16px في الحقول يمنع تكبير آيفون التلقائي عند الكتابة */
-input,select,textarea{font-size:16px;font-size:max(16px,1rem)}
-button{cursor:pointer;border:0;background:none;padding:0}
-img{max-width:100%;display:block}
-h1,h2,h3,p{margin:0}
-:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
-.ic{width:1.375rem;height:1.375rem;flex:none}
-
-/* ---------- shell ---------- */
-.app{position:relative;height:100%;display:flex;flex-direction:column;overflow:hidden;
-  padding-right:env(safe-area-inset-right,0px);padding-left:env(safe-area-inset-left,0px)}
-.app-bg{position:absolute;top:0;left:0;bottom:0;right:0;background-color:#2e1b0e;
-  background-image:
-    radial-gradient(ellipse 85% 46% at 88% 0%,rgba(224,172,92,.30),rgba(224,172,92,0) 72%),
+  .app-bg{background-image:radial-gradient(ellipse 85% 46% at 88% 0%,rgba(224,172,92,.30),rgba(224,172,92,0) 72%),
     radial-gradient(ellipse 70% 40% at 0% 100%,rgba(93,106,55,.16),rgba(93,106,55,0) 70%),
     repeating-linear-gradient(-174deg,rgba(246,226,190,.04) 0,rgba(246,226,190,.04) 2px,rgba(246,226,190,0) 2px,rgba(246,226,190,0) 54px),
     linear-gradient(-180deg,#54331b 0%,#39220f 34%,#25160b 70%,#1c1008 100%)}
-.main{position:relative;order:1;flex:1;min-width:0;min-height:0;display:flex;flex-direction:column}
-.view{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.view::-webkit-scrollbar{display:none}
-.page,.foot-in{width:100%;max-width:70rem;margin:0 auto}
-.page-add{max-width:40rem}
-.page-login{max-width:30rem}
-.page-myads,.page-notifs{max-width:46rem}
-.page-chats,.page-thread,.page-account,.foot-thread{max-width:46rem}
-.page-splash{max-width:none;height:100%}
-
-/* ---------- shared controls ---------- */
-.round-btn{width:2.625rem;height:2.625rem;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;
-  background:rgba(246,226,190,.12);border:1px solid var(--line-dark);color:var(--on-dark)}
-.btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:3.25rem;padding:0 1.1rem;border-radius:999px;font-weight:700;font-size:1.0625rem}
-.btn .ic{margin-right:.5rem}
-.btn-gold{color:#2a190e;background:#d6a557;background:linear-gradient(-180deg,#f6dca6 0%,#d6a557 55%,#a8742f 100%);
-  box-shadow:0 8px 22px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.55)}
-.btn-ghost{color:var(--on-dark);border:1px solid rgba(246,226,190,.5);background:rgba(20,11,6,.35)}
-.topbar{display:flex;align-items:center;padding:.9rem var(--pad) .6rem}
-.topbar h1{flex:1;text-align:center;font-size:1.25rem;font-weight:700;margin:0 .75rem;min-width:0}
-.topbar .ghost{width:2.625rem;flex:none}
-.sec-head{display:flex;align-items:baseline;justify-content:space-between;padding:1.4rem var(--pad) .6rem}
-.sec-head h2{font-size:1.125rem;font-weight:700;text-shadow:0 1px 6px rgba(31,18,10,.7)}
-.sec-head button{font-size:.875rem;color:var(--gold);display:flex;align-items:center}
-.sec-head .ic{width:1rem;height:1rem;margin-left:.1rem}
-
-/* ---------- logo ---------- */
-.logo{display:inline-flex;align-items:center;color:var(--gold);text-align:left}
-.logo svg{width:2.75rem;height:2.375rem;margin-right:.6rem;flex:none}
-.logo b{display:block;font-size:1.375rem;font-weight:800;line-height:1.15;color:var(--on-dark)}
-
-/* ---------- splash ---------- */
-.splash{position:relative;min-height:100%;display:flex;background-color:#3a2210;
-  background-image:radial-gradient(ellipse 95% 40% at 50% 12%,rgba(240,200,130,.40),rgba(240,200,130,0) 70%),linear-gradient(-180deg,#7c4b23 0%,#56331a 36%,#2d1a0d 76%,#1f120a 100%)}
-.has-pat .splash{background-image:var(--pat),radial-gradient(ellipse 95% 40% at 50% 12%,rgba(240,200,130,.40),rgba(240,200,130,0) 70%),linear-gradient(-180deg,#7c4b23 0%,#56331a 36%,#2d1a0d 76%,#1f120a 100%)}
-.splash::before{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:linear-gradient(-180deg,rgba(31,18,10,0) 50%,rgba(31,18,10,.55) 100%)}
-.splash-in{position:relative;width:100%;max-width:30rem;margin:0 auto;display:flex;flex-direction:column;padding-bottom:1.5rem}
-.sp-main{text-align:center;padding:2rem 1.4rem 0;color:var(--on-dark)}
-.sp-main>svg{width:5.25rem;height:4.5rem;color:var(--gold)}
-.sp-main h1{font-size:3.25rem;font-weight:800;line-height:1.15;margin-top:.3rem;color:#f6dca6;-webkit-filter:drop-shadow(0 3px 10px rgba(31,18,10,.6));filter:drop-shadow(0 3px 10px rgba(31,18,10,.6))}
-@supports ((-webkit-background-clip:text) or (background-clip:text)){.sp-main h1{background:linear-gradient(-180deg,#fff6e2 10%,#f0cd8c 55%,#c9944a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}}
-.sp-main .tag{font-size:1.125rem;margin-top:.4rem;font-weight:500}
-.sp-main .search{margin:1.1rem 0 0}
-.sp-main .search button{flex:none;width:2.5rem;height:2.5rem;margin-right:-.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2a190e;background:#d6a557;background:linear-gradient(-180deg,#f6dca6,#d6a557)}
-.sp-main .search button .ic{color:#2a190e;-webkit-transform:none;transform:none}
-.sp-stats{display:flex;justify-content:center;flex-wrap:wrap;margin-top:.9rem;font-size:.8125rem;color:var(--on-dark-muted)}
-.sp-stats span{display:inline-flex;align-items:baseline;margin:0 .55rem}
-.sp-stats b{color:var(--gold);font-size:1.0625rem;font-weight:800;margin-right:.3rem}
-.sp-cta{margin-top:1rem}
-.sp-cta .btn + .btn{margin-top:.6rem}
-.sp-note{font-size:.8125rem;color:var(--on-dark-muted);margin-top:.6rem}
-.sp-login{display:inline-block;margin-top:.5rem;padding:.25rem .5rem;font-size:.9375rem;color:var(--on-dark-muted)}
-.sp-login b{color:var(--gold);text-decoration:underline}
-.sp-side{min-width:0;padding-top:1.25rem}
-.splash-cats{display:grid;grid-template-columns:repeat(4,1fr);grid-gap:.5rem;gap:.5rem;padding:0 1.4rem}
-.splash-cats button{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.7rem .15rem .55rem;border-radius:16px;font-size:.75rem;font-weight:500;text-align:center;line-height:1.25;
-  color:var(--on-dark);background:rgba(246,226,190,.10);border:1px solid var(--line-dark)}
-.splash-cats .ic{width:1.6rem;height:1.6rem;color:var(--gold);margin-bottom:.35rem}
-.splash .sec-head{padding:1.2rem 1.4rem .6rem}
-.splash .hscroll{display:flex;overflow-x:auto;padding:0 1.4rem .4rem}
-.splash .hscroll .card{flex:0 0 10.5rem}
-.splash .hscroll .card.card + .card{margin-left:.75rem}
-.splash .hscroll::after{display:block;content:"";flex:0 0 1.4rem}
-.perks{display:flex;margin:1.25rem 1.4rem 0;padding:.9rem .5rem;border-radius:20px;color:var(--on-dark);
-  background:rgba(44,26,14,.66);border:1px solid var(--line-dark)}
-.perks div{flex:1;display:flex;flex-direction:column;align-items:center;font-size:.875rem;font-weight:500;text-align:center}
-.perks .ic{width:1.875rem;height:1.875rem;color:var(--gold);margin-bottom:.35rem}
-.splash-foot{text-align:center;color:var(--on-dark-muted);font-size:.875rem;margin-top:1rem}
-@media (min-width:900px){
-  .splash{align-items:center}
-  .splash-in{max-width:68rem;flex-direction:row;align-items:center;padding:2rem 1.5rem}
-  .sp-main{flex:0 0 42%;max-width:42%;padding-top:0}
-  .sp-side{flex:1;padding-top:0;margin-left:1.5rem}
-  .splash .hscroll{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:.75rem;gap:.75rem;overflow:visible;padding-bottom:0}
-  .splash .hscroll .card.card + .card{margin-left:0}
-  .splash .hscroll .card:nth-child(n+4){display:none}
-  .splash .hscroll::after{display:none}
+  .btn .ic{margin-left:0;margin-right:.5rem}
+  .btn-gold{background:linear-gradient(-180deg,#f6dca6 0%,#d6a557 55%,#a8742f 100%)}
+  .sec-head .ic{margin-right:0;margin-left:.1rem}
+  .logo{text-align:left}
+  .logo svg{margin-left:0;margin-right:.6rem}
+  .splash{background-image:radial-gradient(ellipse 95% 40% at 50% 12%,rgba(240,200,130,.40),rgba(240,200,130,0) 70%),linear-gradient(-180deg,#7c4b23 0%,#56331a 36%,#2d1a0d 76%,#1f120a 100%)}
+  .has-pat .splash{background-image:var(--pat),radial-gradient(ellipse 95% 40% at 50% 12%,rgba(240,200,130,.40),rgba(240,200,130,0) 70%),linear-gradient(-180deg,#7c4b23 0%,#56331a 36%,#2d1a0d 76%,#1f120a 100%)}
+  .splash::before{background:linear-gradient(-180deg,rgba(31,18,10,0) 50%,rgba(31,18,10,.55) 100%)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)) {
+  .sp-main h1{background:linear-gradient(-180deg,#fff6e2 10%,#f0cd8c 55%,#c9944a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 }
-@media (prefers-reduced-motion:no-preference){
-  @keyframes rise{from{opacity:0;-webkit-transform:translateY(14px);transform:translateY(14px)}to{opacity:1;-webkit-transform:none;transform:none}}
-  .sp-main>*,.sp-side{-webkit-animation:rise .5s ease-out both;animation:rise .5s ease-out both}
-  .sp-main>*:nth-child(2){animation-delay:.06s}.sp-main>*:nth-child(3){animation-delay:.12s}.sp-main>*:nth-child(4){animation-delay:.2s}
-  .sp-main>*:nth-child(5){animation-delay:.28s}.sp-main>*:nth-child(6){animation-delay:.36s}.sp-main>*:nth-child(n+7){animation-delay:.42s}
-  .sp-side{animation-delay:.5s}
+  .sp-main .search button{margin-left:0;margin-right:-.6rem;background:linear-gradient(-180deg,#f6dca6,#d6a557)}
+  .sp-main .search button .ic{-webkit-transform:none;transform:none}
+  .sp-stats b{margin-left:0;margin-right:.3rem}
+  .splash .hscroll .card.card + .card{margin-right:0;margin-left:.75rem}
+@media (min-width:900px) {
+  .sp-side{margin-right:0;margin-left:1.5rem}
 }
-
-/* ---------- home ---------- */
-.home-head{display:flex;align-items:center;justify-content:space-between;padding:.9rem var(--pad) .4rem}
-.loc-chip{display:inline-flex;align-items:center;font-size:.8125rem;color:var(--on-dark-muted)}
-.loc-chip .ic{width:.875rem;height:.875rem;color:var(--gold);margin-right:.25rem}
-.bell{position:relative}
-.bell.has::after{content:"";position:absolute;top:.5rem;right:.6rem;width:9px;height:9px;border-radius:50%;background:#e2552b;border:2px solid #4a2e19}
-.search{display:flex;align-items:center;margin:.6rem var(--pad) 0;padding:0 1rem;height:3.25rem;border-radius:999px;
-  background:var(--cream);color:var(--on-light);box-shadow:0 6px 18px rgba(0,0,0,.3)}
-.search input{flex:1;min-width:0;border:0;background:none;outline:0;color:var(--on-light);margin-left:.6rem}
-.search input::placeholder{color:var(--on-light-muted)}
-.search .ic{color:var(--umber)}
-.hero{position:relative;margin:.9rem var(--pad) 0;height:11rem;border-radius:22px;overflow:hidden;border:1px solid rgba(246,226,190,.3);background-color:#a8672b;background-image:linear-gradient(-115deg,#dca852 0%,#b5712e 42%,#6c3b18 100%)}
-.has-pat .hero{background-image:var(--pat-hero),linear-gradient(-115deg,#dca852 0%,#b5712e 42%,#6c3b18 100%)}
-.hero::after{content:"";position:absolute;top:0;left:0;bottom:0;right:0;background:linear-gradient(0deg,rgba(26,14,7,.62) 0%,rgba(26,14,7,0) 75%)}
-.hero-text{position:absolute;z-index:1;left:1.1rem;right:1.1rem;bottom:1rem}
-.hero-text h2{font-size:1.625rem;font-weight:800;line-height:1.2}
-.hero-text p{font-size:.9375rem;color:#fbeed4}
-.hero-cta{display:inline-flex;align-items:center;margin-top:.6rem;padding:.4rem 1rem;border-radius:999px;font-size:.875rem;font-weight:700;color:#2a190e;background:#f8eedc;box-shadow:0 4px 12px rgba(0,0,0,.25)}
-.hero-cta .ic{width:1rem;height:1rem;margin-right:.35rem}
-
-.cats{display:grid;grid-template-columns:repeat(4,1fr);grid-gap:.6rem;gap:.6rem;padding:0 var(--pad)}
-.cat{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:5.75rem;padding:.7rem .2rem .6rem;
-  border-radius:18px;color:var(--on-light);font-size:.8125rem;font-weight:500;line-height:1.25;text-align:center;
-  background:#ecd6ae;background:linear-gradient(-160deg,#fbf1df 0%,#e3c595 100%);box-shadow:0 6px 14px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.7)}
-.cat .ic{width:1.875rem;height:1.875rem;color:#3a2210;margin-bottom:.45rem}
-
-/* ---------- photo slot (نسبة 4:3 ببديل padding للمتصفحات الأقدم) ---------- */
-.ph{position:relative}
-.photo{position:relative;height:0;padding-top:75%;overflow:hidden;background:#d9bd8f;
-  background-image:repeating-linear-gradient(-135deg,rgba(74,46,27,.07) 0,rgba(74,46,27,.07) 10px,transparent 10px,transparent 20px)}
-.photo img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover}
-.photo .slot{position:absolute;top:0;left:0;bottom:0;right:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(74,46,27,.88);font-size:.75rem}
-.photo .slot .ic{width:1.6rem;height:1.6rem;margin-bottom:.2rem}
-.fav{position:absolute;top:.5rem;right:.5rem;width:2.125rem;height:2.125rem;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  background:rgba(248,238,220,.92);color:var(--umber);box-shadow:0 2px 6px rgba(0,0,0,.25)}
-.fav .ic{width:1.125rem;height:1.125rem}
-.fav[aria-pressed="true"]{color:#c0361c}
-.fav[aria-pressed="true"] .ic{fill:currentColor}
-.badge{position:absolute;top:.5rem;left:.5rem;padding:.1rem .6rem;border-radius:999px;font-size:.75rem;font-weight:700;
-  color:#2a190e;background:#e6bd74;background:linear-gradient(-180deg,#f6dca6,#d6a557)}
-
-/* ---------- ad cards ---------- */
-.card{display:flex;flex-direction:column;text-align:left;border-radius:18px;overflow:hidden;color:var(--on-light);cursor:pointer;
-  background:#f3e4c9;background:linear-gradient(-180deg,#fbf2e2,#eedcbc);box-shadow:0 8px 18px rgba(0,0,0,.3)}
-.card-body{flex:1;padding:.6rem .75rem .75rem}
-.card h3{font-size:.9375rem;font-weight:700;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.7em}
-.price{font-size:1.125rem;font-weight:800;color:var(--ember);line-height:1.3;margin-top:.1rem}
-.price small{font-size:.75rem;font-weight:500;color:var(--on-light-muted)}
-.meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:.35rem;font-size:.75rem;color:var(--on-light-muted)}
-.meta span{display:inline-flex;align-items:center;white-space:nowrap}
-.meta .ic{width:.8125rem;height:.8125rem;margin-right:.2rem}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-gap:.75rem;gap:.75rem;padding:0 var(--pad)}
-.hscroll{display:flex;overflow-x:auto;padding:0 var(--pad) .4rem;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.hscroll::-webkit-scrollbar{display:none}
-.hscroll .card{flex:0 0 12.25rem}
-.hscroll .card + .card{margin-left:.75rem}
-.hscroll::after{content:"";flex:0 0 var(--pad)}
-.list{display:grid;grid-template-columns:minmax(0,1fr);grid-gap:.75rem;gap:.75rem;padding:0 var(--pad)}
-.card.row{flex-direction:row}
-.card.row .ph{flex:0 0 36%;max-width:9rem}
-.card.row .photo{height:100%;min-height:7rem;padding-top:0}
-.card.row .card-body{display:flex;flex-direction:column;justify-content:center;padding-right:2.6rem;position:relative;min-width:0}
-.card.row h3{min-height:0}
-.card.row .fav{top:.5rem;right:.3rem;background:none;box-shadow:none}
-
-/* ---------- listing filters ---------- */
-.filters{display:flex;padding:.75rem var(--pad) .25rem}
-.pill{flex:1;min-width:0;display:flex;align-items:center;height:2.75rem;padding:0 .8rem;border-radius:999px;
-  background:rgba(246,226,190,.12);border:1px solid var(--line-dark)}
-.pill + .pill{margin-left:.5rem}
-.pill .ic{width:1.125rem;height:1.125rem;color:var(--gold);margin-right:.5rem}
-.pill select{-webkit-appearance:none;-moz-appearance:none;appearance:none;flex:1;min-width:0;border:0;background:none;outline:0;color:var(--on-dark)}
-.pill select option{color:#2a190e}
-.chips{display:flex;overflow-x:auto;padding:.6rem var(--pad) .9rem;scrollbar-width:none}
-.chips::-webkit-scrollbar{display:none}
-.chip{flex:none;padding:.35rem .9rem;border-radius:999px;font-size:.875rem;border:1px solid var(--line-dark);color:var(--on-dark);background:rgba(31,18,10,.35)}
-.chip + .chip{margin-left:.5rem}
-.chip[aria-pressed="true"]{background:var(--gold);color:#2a190e;border-color:var(--gold);font-weight:700}
-.cat-label{display:flex;align-items:center;font-weight:700;color:var(--gold);padding:0 var(--pad)}
-.cat-label .ic{margin-right:.5rem}
-.count{padding:0 var(--pad) .6rem;font-size:.8125rem;color:var(--on-dark-muted)}
-.empty{margin:1.8rem var(--pad);padding:1.75rem 1.25rem;text-align:center;border-radius:18px;border:1px dashed var(--line-dark);color:var(--on-dark-muted)}
-.empty b{display:block;color:var(--on-dark);font-size:1.0625rem;margin-bottom:.25rem}
-
-/* ---------- detail ---------- */
-.gallery{position:relative;overflow:hidden}
-.gallery .track{display:flex;overflow-x:auto;-webkit-scroll-snap-type:x mandatory;scroll-snap-type:x mandatory;scrollbar-width:none}
-.gallery .track::-webkit-scrollbar{display:none}
-.gallery .slide{flex:0 0 100%;scroll-snap-align:center}
-.gallery .bar{position:absolute;top:.75rem;left:.9rem;right:.9rem;display:flex}
-.gallery .bar .round-btn{background:rgba(31,18,10,.6);border-color:rgba(246,226,190,.3)}
-.gallery .bar .round-btn + .round-btn{margin-left:.5rem}
-.gallery .bar .round-btn[aria-pressed="true"]{color:#ff8d6b}
-.gallery .bar .round-btn[aria-pressed="true"] .ic{fill:currentColor}
-.gallery .bar .sp{flex:1}
-.gallery .counter{position:absolute;bottom:.75rem;left:.9rem;padding:.1rem .75rem;border-radius:999px;font-size:.8125rem;background:rgba(31,18,10,.7)}
-.sheet{padding:1.1rem var(--pad) .5rem}
-.sheet h1{font-size:1.375rem;font-weight:800;line-height:1.3}
-.sheet .price{font-size:1.625rem;color:var(--gold)}
-.sheet .price small{color:var(--on-dark-muted);font-size:.875rem}
-.facts{display:flex;flex-wrap:wrap;margin-top:.5rem;font-size:.875rem;color:var(--on-dark-muted)}
-.facts span{display:inline-flex;align-items:center;margin:0 1rem .35rem 0}
-.facts .ic{width:1rem;height:1rem;color:var(--gold);margin-right:.3rem}
-.block{margin:.9rem var(--pad) 0;padding:1rem;border-radius:18px;background:rgba(31,18,10,.5);border:1px solid var(--line-dark)}
-.block h2{font-size:1rem;font-weight:700;margin-bottom:.5rem}
-.block p{color:#ecdcc0;max-width:60ch}
-.specs{display:flex;flex-wrap:wrap;margin:0 -.5rem}
-.specs div{flex:1 1 9.5rem;display:flex;justify-content:space-between;margin:0 .5rem;padding:.5rem 0;border-bottom:1px solid var(--line-dark);font-size:.875rem}
-.specs dt{color:var(--on-dark-muted);margin-right:.5rem} .specs dd{margin:0;font-weight:700}
-.seller{display:flex;align-items:center}
-.avatar{width:3.25rem;height:3.25rem;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;font-weight:800;font-size:1.25rem;color:#2a190e;
-  background:#d6a557;background:linear-gradient(-160deg,#f6dca6,#c9954a);margin-right:.75rem}
-.seller b{display:flex;align-items:center;font-size:1rem}
-.seller b .ic{width:1.0625rem;height:1.0625rem;color:var(--gold);margin-left:.3rem}
-.seller small{display:flex;flex-wrap:wrap;color:var(--on-dark-muted);font-size:.8125rem}
-.seller small span{display:inline-flex;align-items:center;margin-right:.75rem}
-.seller small .ic{width:.875rem;height:.875rem;margin-right:.25rem}
-.star .ic{color:var(--gold);fill:var(--gold)}
-.actions{display:flex;padding:.75rem var(--pad) .9rem}
-.actions .btn{min-height:3.1rem}
-.actions .btn + .btn{margin-left:.6rem}
-.foot-detail{background:rgba(31,18,10,.82)}
-
-/* ---------- wizard ---------- */
-.steps{padding:.25rem var(--pad) .9rem}
-.steps .now{display:flex;justify-content:space-between;align-items:baseline;font-size:.875rem;color:var(--on-dark-muted);margin-bottom:.5rem}
-.steps .now b{font-size:1.0625rem;color:var(--on-dark)}
-.steps ol{list-style:none;display:flex;margin:0 -2px;padding:0}
-.steps li{flex:1;height:6px;margin:0 2px;border-radius:3px;background:rgba(246,226,190,.18)}
-.steps li.past{background:var(--gold-deep)} .steps li.cur{background:var(--gold)}
-.form{margin:0 var(--pad);padding:1.1rem 1rem;border-radius:22px;color:var(--on-light);
-  background:#f3e4c9;background:linear-gradient(-180deg,#fbf2e2,#efddbe);box-shadow:0 10px 24px rgba(0,0,0,.3)}
-.form h2{font-size:1.1875rem;font-weight:800}
-.form .hint{color:var(--on-light-muted);font-size:.875rem;margin:.1rem 0 .9rem}
-.field{display:block;margin-top:.75rem}
-.field>span{display:block;font-size:.875rem;font-weight:700;margin-bottom:.4rem}
-.field input,.field textarea,.field select{width:100%;min-height:3rem;padding:.6rem .9rem;border-radius:14px;border:1px solid rgba(74,46,27,.25);background:#fffaf0;color:var(--on-light);outline:0}
-.field textarea{min-height:8rem;resize:vertical;line-height:1.6}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--gold-deep);box-shadow:0 0 0 3px rgba(178,127,54,.25)}
-.check{display:flex;align-items:center;margin-top:.9rem;font-size:.9375rem}
-.check input{width:1.25rem;height:1.25rem;accent-color:#8a5a25;margin-right:.6rem}
-.err{margin-top:.75rem;padding:.6rem .75rem;border-radius:12px;background:#f4d3c2;color:#7a2410;font-size:.875rem;font-weight:500}
-.form .cats{padding:0;grid-template-columns:repeat(3,1fr)}
-.form .cat{background:#fffaf0;box-shadow:none;border:1px solid rgba(74,46,27,.2);min-height:5.25rem}
-.form .cat[aria-pressed="true"]{background:#e6bd74;background:linear-gradient(-180deg,#f6dca6,#dcae63);border-color:#8a5a25}
-.thumbs{display:grid;grid-template-columns:repeat(4,1fr);grid-gap:.5rem;gap:.5rem}
-.thumbs .t{position:relative;height:0;padding-top:100%;border-radius:12px;overflow:hidden;background:#e3c595}
-.thumbs img{position:absolute;top:0;right:0;width:100%;height:100%;object-fit:cover}
-.thumbs .rm{position:absolute;top:.25rem;right:.25rem;width:1.6rem;height:1.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(31,18,10,.75);color:#fff}
-.thumbs .rm .ic{width:.875rem;height:.875rem}
-.thumbs .t.new{background:none;border:1.5px dashed #8a5a25}
-.thumbs label{position:absolute;top:0;left:0;bottom:0;right:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#6a441e;font-size:.75rem;cursor:pointer}
-.thumbs .t.new:focus-within{outline:2px solid var(--gold-deep);outline-offset:2px}
-.thumbs input{position:absolute;opacity:0;width:1px;height:1px}
-.preview{max-width:13.75rem;margin:0 auto;cursor:default}
-.summary{margin:.9rem 0 0}
-.summary div{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid var(--line-light);font-size:.875rem}
-.summary dt{color:var(--on-light-muted);margin-right:.75rem;flex:none} .summary dd{margin:0;font-weight:700;text-align:right}
-.wiz-nav{display:flex;padding:1rem var(--pad)}
-.wiz-nav .btn{min-height:3.1rem}
-.wiz-nav .back{flex:0 0 36%;margin-right:.6rem}
-.published{text-align:center;padding:.6rem 0}
-.published .tick{width:4.5rem;height:4.5rem;margin:.4rem auto .75rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;background:var(--palm)}
-.published .tick .ic{width:2.25rem;height:2.25rem}
-
-/* ---------- chats ---------- */
-.rowlist{margin:0 var(--pad);border-radius:18px;overflow:hidden;background:rgba(31,18,10,.5);border:1px solid var(--line-dark)}
-.rowlist>button{display:flex;align-items:center;width:100%;padding:.875rem;text-align:left;border-bottom:1px solid var(--line-dark)}
-.rowlist>button:last-child{border-bottom:0}
-.rowlist .grow{flex:1;min-width:0}
-.rowlist b{display:block;font-size:.9375rem}
-.rowlist small{display:block;color:var(--on-dark-muted);font-size:.8125rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rowlist .side{display:flex;flex-direction:column;align-items:center;flex:none;margin-left:.6rem}
-.rowlist time,.rowlist .end{font-size:.75rem;color:var(--on-dark-muted);flex:none}
-.rowlist .end{margin:0 .5rem}
-.rowlist .ic.lead{color:var(--gold);margin-right:.75rem}
-.rowlist .avatar{width:2.875rem;height:2.875rem;font-size:1.125rem}
-.dot{min-width:1.25rem;height:1.25rem;padding:0 .35rem;margin-top:.25rem;border-radius:.625rem;background:var(--gold);color:#2a190e;font-size:.75rem;font-weight:800;display:flex;align-items:center;justify-content:center}
-.thread{display:flex;flex-direction:column;padding:.4rem var(--pad) 1rem}
-.msg{max-width:78%;padding:.55rem .875rem;border-radius:18px;font-size:.9375rem;margin-top:.5rem}
-.msg.them{align-self:flex-end;background:rgba(246,226,190,.16);border-bottom-right-radius:6px}
-.msg.me{align-self:flex-start;background:#e6bd74;background:linear-gradient(-180deg,#f6dca6,#d6a557);color:#2a190e;border-bottom-left-radius:6px}
-.about-ad{margin:0 var(--pad) .6rem;padding:.6rem .875rem;border-radius:14px;background:rgba(31,18,10,.5);border:1px solid var(--line-dark);font-size:.875rem;color:var(--on-dark-muted)}
-.about-ad b{color:var(--on-dark)}
-.foot-thread-wrap{background:rgba(31,18,10,.82)}
-.composer{display:flex;padding:.6rem var(--pad) .875rem}
-.composer input{flex:1;min-width:0;height:3rem;border-radius:999px;border:1px solid var(--line-dark);background:rgba(246,226,190,.1);padding:0 1rem;outline:0}
-.composer input:focus{border-color:var(--gold)}
-.composer button{width:3rem;height:3rem;margin-left:.5rem;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2a190e;background:#d6a557;background:linear-gradient(-180deg,#f6dca6,#d6a557)}
-.composer .ic{-webkit-transform:none;transform:none}
-
-/* ---------- account ---------- */
-.me{display:flex;align-items:center;margin:.4rem var(--pad) 0;padding:1.1rem;border-radius:22px;color:var(--on-light);background:#ecd6ae;background:linear-gradient(-160deg,#fbf1df,#e3c595)}
-.me .avatar{width:3.75rem;height:3.75rem;font-size:1.5rem;background:#4d311c;background:linear-gradient(-160deg,#6a3d18,#3a220f);color:var(--gold)}
-.me b{font-size:1.125rem} .me small{display:block;color:var(--on-light-muted);font-size:.8125rem}
-.stats{display:flex;margin:.75rem var(--pad) 1rem}
-.stats div{flex:1;padding:.75rem .4rem;text-align:center;border-radius:16px;background:rgba(31,18,10,.5);border:1px solid var(--line-dark)}
-.stats div + div{margin-left:.6rem}
-.stats b{display:block;font-size:1.375rem;font-weight:800;color:var(--gold);line-height:1.2}
-.stats span{font-size:.8125rem;color:var(--on-dark-muted)}
-
-/* ---------- navigation: شريط سفلي في الهواتف ---------- */
-.nav{position:relative;order:2;display:flex;align-items:flex-end;padding:.5rem .4rem .6rem;
-  background:rgba(34,20,11,.94);border-top:1px solid var(--line-dark)}
-.nav-brand{display:none}
-.nav button{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;font-size:.75rem;color:var(--on-dark-muted);padding:.25rem 0}
-.nav button .ic{margin-bottom:.2rem}
-.nav button[aria-current="page"]{color:var(--gold);font-weight:700}
-.nav .orb{width:3.5rem;height:3.5rem;margin-top:-1.9rem;margin-bottom:.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#2a190e;
-  background:#d6a557;background:linear-gradient(-180deg,#f6dca6 0%,#d6a557 55%,#a8742f 100%);border:4px solid #2c1a0e;box-shadow:0 6px 16px rgba(0,0,0,.45)}
-.nav .orb .ic{width:1.75rem;height:1.75rem;stroke-width:2.2;margin:0}
-.nav .add{color:var(--on-dark)}
-.app[data-s="splash"] .nav,.app[data-s="add"] .nav,.app[data-s="detail"] .nav,.app[data-s="thread"] .nav,.app[data-s="login"] .nav{display:none}
-
-.toast{position:absolute;left:1.25rem;right:1.25rem;bottom:6rem;z-index:20;max-width:24rem;margin:0 auto;padding:.75rem 1rem;border-radius:14px;text-align:center;font-size:.875rem;
-  background:var(--cream);color:var(--on-light);box-shadow:0 10px 30px rgba(0,0,0,.5);opacity:0;-webkit-transform:translateY(8px);transform:translateY(8px);pointer-events:none;transition:opacity .2s,transform .2s}
-.toast.show{opacity:1;-webkit-transform:none;transform:none}
-.bottom-space{height:1.4rem}
-@media (prefers-reduced-motion:reduce){.toast{transition:none}}
-
-/* ---------- إضافات: فلترة، إعلاناتي، بائع، دخول ---------- */
-.btn-light{color:var(--on-light);border:1px solid rgba(74,46,27,.3);background:#fffaf0}
-.pill.icon{flex:none;width:2.75rem;padding:0;justify-content:center;position:relative;color:var(--on-dark)}
-.pill.icon .ic{margin:0}
-.pill.icon.on{border-color:var(--gold)}
-.pill.icon .dot{position:absolute;top:-.35rem;right:-.25rem;margin:0}
-.fpanel{margin-top:.75rem;max-width:34rem}
-.frow{display:flex}
-.frow .field{flex:1;min-width:0}
-.frow .field + .field{margin-left:.6rem}
-.fbtns{margin-top:1rem}
-.fbtns .btn{min-height:3rem;font-size:1rem}
-.fbtns .btn + .btn{margin-left:.6rem}
-.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-gap:0 .6rem;gap:0 .6rem}
-.badge.sold{background:#4d3a2a;color:#f7ead3}
-.chip-s{display:inline-block;padding:.05rem .6rem;margin-bottom:.25rem;border-radius:999px;font-size:.75rem;font-weight:700;background:#dfe5c8;color:#3d4a1c}
-.chip-s.off{background:#e0cdb4;color:#6b5540}
-.list.one{grid-template-columns:minmax(0,1fr)}
-.card.mine{cursor:default}
-.mine-top{display:flex;cursor:pointer}
-.mine-top .ph{flex:0 0 32%;max-width:8rem}
-.mine-top .photo{height:100%;min-height:6.25rem;padding-top:0}
-.mine-top h3{min-height:0}
-.mine-acts{display:flex;border-top:1px solid var(--line-light)}
-.mine-acts button{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;padding:.65rem .2rem;font-size:.875rem;font-weight:700;color:var(--umber)}
-.mine-acts button + button{border-left:1px solid var(--line-light)}
-.mine-acts .ic{width:1rem;height:1rem;margin-right:.3rem}
-.mine-acts .danger{color:#9b2c14}
-.rowlist>button.new{background:rgba(230,189,116,.12)}
-.rowlist .dot{font-weight:700}
-button.seller{width:100%;text-align:left}
-.seller .grow{flex:1;min-width:0;display:block}
-.seller>.ic{color:var(--on-dark-muted)}
-.stars{display:inline-flex}
-.stars .ic{width:1rem;height:1rem;color:var(--gold)}
-.stars .ic.on{fill:var(--gold)}
-.stars .ic.off{opacity:.4}
-.review p{margin:.35rem 0 .25rem}
-.review small{color:var(--on-dark-muted);font-size:.8125rem}
-.me.guest{flex-direction:column;align-items:stretch;text-align:center}
-.me.guest .btn{margin-top:.9rem}
-.empty .btn{margin-top:1rem}
-.otp{text-align:center;letter-spacing:.6em;font-weight:700}
-
-.seg{display:flex;padding:3px;margin-bottom:.25rem;border-radius:999px;background:rgba(74,46,27,.12)}
-.seg button{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;padding:.5rem .25rem;border-radius:999px;font-size:.875rem;font-weight:700;color:var(--on-light-muted)}
-.seg button .ic{width:1.1rem;height:1.1rem;margin-right:.35rem}
-.seg button[aria-pressed="true"]{background:#fffaf0;color:var(--on-light);box-shadow:0 1px 4px rgba(74,46,27,.25)}
-.or{display:flex;align-items:center;padding:0 var(--pad);color:var(--on-dark-muted);font-size:.875rem}
-.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line-dark)}
-.or span{margin:0 .75rem}
-.social{padding:.9rem var(--pad) 0}
-.social .btn{min-height:3.1rem;font-size:1rem}
-.social .btn + .btn{margin-top:.6rem}
-.social .ic{width:1.25rem;height:1.25rem;margin-right:.6rem}
-.btn-google{background:#fff;color:#1f1f1f;border:1px solid #dadce0}
-.btn-apple{background:#000;color:#fff;border:1px solid rgba(255,255,255,.25)}
-
-.cat.more{background:rgba(246,226,190,.10);color:var(--on-dark);border:1px solid var(--line-dark);box-shadow:none}
-.cat.more .ic{color:var(--gold)}
-.chips.tight{padding-bottom:.25rem}
-.field select:disabled{opacity:.55}
-.cimg{flex:none;--i1:#4a2a12;--i2:#c08a3e;--i3:#f6e9cf}
-.cimg .a{fill:#4a2a12;fill:var(--i1)}.cimg .b{fill:#c08a3e;fill:var(--i2)}.cimg .c{fill:#f6e9cf;fill:var(--i3)}
-.cimg .sa{fill:none;stroke:#4a2a12;stroke:var(--i1);stroke-linecap:round;stroke-linejoin:round}
-.cimg .sb{fill:none;stroke:#c08a3e;stroke:var(--i2);stroke-linecap:round;stroke-linejoin:round}
-.cat .cimg{width:2.6rem;height:2.6rem;margin-bottom:.4rem}
-.form .cat[aria-pressed="true"] .cimg{--i2:#8a5a25;--i3:#f6dca6}
-.splash-cats .cimg,.cat-label .cimg{--i1:#f6e2be;--i2:#d9a655;--i3:#3a2414}
-.splash-cats .cimg{width:2.1rem;height:2.1rem}
-.cat-label .cimg{width:1.6rem;height:1.6rem}
-.card-link{color:inherit;text-decoration:none}
-.card-link:focus-visible{outline:2px solid var(--gold-deep);outline-offset:2px;border-radius:4px}
-[tabindex="-1"]:focus{outline:none}
-.linkbtn{display:block;margin:.5rem auto 0;padding:.6rem 1rem;min-height:42px;color:var(--on-dark-muted);font-size:.875rem;text-decoration:underline}
-.noscript{margin:2rem 1rem;padding:1rem;border-radius:14px;background:#f8eedc;color:#2a190e;text-align:center;font-family:system-ui,Tahoma,sans-serif}
-.ltr-in{text-align:left}
-.logo b,.nav-brand b{white-space:nowrap}
-@media (max-width:359px){.home-head .loc-chip{display:none}}
-.lang{min-height:42px;min-width:44px;padding:.35rem .85rem;border-radius:999px;font-size:.8125rem;font-weight:700;color:var(--on-dark);border:1px solid rgba(240,214,168,.35);background:rgba(40,24,12,.35)}
-.lang.on-splash{position:absolute;top:.9rem;right:1rem;z-index:2}
-.head-tools{display:inline-flex;align-items:center}
-.head-tools .lang{margin-right:.5rem}
-/* نص المستخدم: كسر الكلمات الطويلة، وحفظ الأسطر، واتجاه تلقائي */
-.sheet h1,.block p,.msg,.card h3,.specs dd,.summary dd,.rowlist b,.about-ad,.me b,.seller b{overflow-wrap:anywhere;word-break:break-word;min-width:0}
-.block p,.msg{white-space:pre-line}
-.search:focus-within,.pill:focus-within{outline:2px solid var(--gold);outline-offset:2px}
-.rowlist>button.danger b{color:#ffb39a}
-.gallery .track:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
-/* مساحات لمس لا تقل عن 40 بكسل */
-.chip{display:inline-flex;align-items:center;min-height:40px}
-.seg button{min-height:40px}
-.fav{width:40px;height:40px}
-.sec-head{align-items:center}
-.sec-head button{min-height:40px;padding:0 .25rem}
-.hero-cta{min-height:40px}
-.sp-login{min-height:40px}
-.pill select{align-self:stretch;height:auto}
-.thumbs .rm{width:2.25rem;height:2.25rem}
-
-/* ---------- أعمدة المنتجات تزيد حسب العرض ---------- */
-@media (min-width:600px){
-  .grid2{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .cats{grid-template-columns:repeat(6,1fr)}
-  .form .cats{grid-template-columns:repeat(4,1fr)}
-  .thumbs{grid-template-columns:repeat(5,1fr)}
+@media (min-width:900px) {
+  .splash .hscroll .card.card + .card{margin-right:0;margin-left:0}
 }
-@media (min-width:720px){ .list{grid-template-columns:repeat(2,minmax(0,1fr))} }
-@media (min-width:768px){
-  :root{--pad:1.5rem}
-  .hero{height:13rem} .hero-text h2{font-size:2.25rem} .hero-text p{font-size:1.0625rem}
-  .hscroll{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:.9rem;gap:.9rem;overflow:visible;padding-bottom:0}
-  .hscroll::after{display:none}
-  .hscroll .card + .card{margin-left:0}
-  .grid2{grid-gap:.9rem;gap:.9rem}
-  .search{max-width:40rem;margin-right:auto;margin-left:auto}
-  .page-list .search{margin-left:var(--pad)}
-  .filters{max-width:34rem}
+  .loc-chip .ic{margin-left:0;margin-right:.25rem}
+  .bell.has::after{left:auto;right:.6rem}
+  .search input{margin-right:0;margin-left:.6rem}
+  .hero{background-image:linear-gradient(-115deg,#dca852 0%,#b5712e 42%,#6c3b18 100%)}
+  .has-pat .hero{background-image:var(--pat-hero),linear-gradient(-115deg,#dca852 0%,#b5712e 42%,#6c3b18 100%)}
+  .hero-cta .ic{margin-left:0;margin-right:.35rem}
+  .cat{background:linear-gradient(-160deg,#fbf1df 0%,#e3c595 100%)}
+  .photo{background-image:repeating-linear-gradient(-135deg,rgba(74,46,27,.07) 0,rgba(74,46,27,.07) 10px,transparent 10px,transparent 20px)}
+  .photo img{left:auto;right:0}
+  .fav{left:auto;right:.5rem}
+  .badge{right:auto;left:.5rem;background:linear-gradient(-180deg,#f6dca6,#d6a557)}
+  .card{text-align:left;background:linear-gradient(-180deg,#fbf2e2,#eedcbc)}
+  .meta .ic{margin-left:0;margin-right:.2rem}
+  .hscroll .card + .card{margin-right:0;margin-left:.75rem}
+  .card.row .card-body{padding-left:0;padding-right:2.6rem}
+  .card.row .fav{left:auto;right:.3rem}
+  .pill + .pill{margin-right:0;margin-left:.5rem}
+  .pill .ic{margin-left:0;margin-right:.5rem}
+  .chip + .chip{margin-right:0;margin-left:.5rem}
+  .cat-label .ic{margin-left:0;margin-right:.5rem}
+  .gallery .bar .round-btn + .round-btn{margin-right:0;margin-left:.5rem}
+  .gallery .counter{right:auto;left:.9rem}
+  .facts span{margin:0 1rem .35rem 0}
+  .facts .ic{margin-left:0;margin-right:.3rem}
+  .specs dt{margin-left:0;margin-right:.5rem}
+  .avatar{margin-left:0;background:linear-gradient(-160deg,#f6dca6,#c9954a);margin-right:.75rem}
+  .seller b .ic{margin-right:0;margin-left:.3rem}
+  .seller small span{margin-left:0;margin-right:.75rem}
+  .seller small .ic{margin-left:0;margin-right:.25rem}
+  .actions .btn + .btn{margin-right:0;margin-left:.6rem}
+  .form{background:linear-gradient(-180deg,#fbf2e2,#efddbe)}
+  .check input{margin-left:0;margin-right:.6rem}
+  .form .cat[aria-pressed="true"]{background:linear-gradient(-180deg,#f6dca6,#dcae63)}
+  .thumbs img{left:auto;right:0}
+  .thumbs .rm{left:auto;right:.25rem}
+  .summary dt{margin-left:0;margin-right:.75rem}
+  .summary dd{text-align:right}
+  .wiz-nav .back{margin-left:0;margin-right:.6rem}
+  .rowlist>button{text-align:left}
+  .rowlist .side{margin-right:0;margin-left:.6rem}
+  .rowlist .ic.lead{margin-left:0;margin-right:.75rem}
+  .msg.them{border-bottom-left-radius:initial;border-bottom-right-radius:6px}
+  .msg.me{border-bottom-right-radius:initial;background:linear-gradient(-180deg,#f6dca6,#d6a557);border-bottom-left-radius:6px}
+  .composer button{margin-right:0;margin-left:.5rem;background:linear-gradient(-180deg,#f6dca6,#d6a557)}
+  .composer .ic{-webkit-transform:none;transform:none}
+  .me{background:linear-gradient(-160deg,#fbf1df,#e3c595)}
+  .me .avatar{background:linear-gradient(-160deg,#6a3d18,#3a220f)}
+  .stats div + div{margin-right:0;margin-left:.6rem}
+  .nav .orb{background:linear-gradient(-180deg,#f6dca6 0%,#d6a557 55%,#a8742f 100%)}
+  .pill.icon .dot{left:auto;right:-.25rem}
+  .frow .field + .field{margin-right:0;margin-left:.6rem}
+  .fbtns .btn + .btn{margin-right:0;margin-left:.6rem}
+  .mine-acts button + button{border-right:none;border-left:1px solid var(--line-light)}
+  .mine-acts .ic{margin-left:0;margin-right:.3rem}
+  button.seller{text-align:left}
+  .seg button .ic{margin-left:0;margin-right:.35rem}
+  .social .ic{margin-left:0;margin-right:.6rem}
+  .ltr-in{text-align:left}
+  .lang.on-splash{left:auto;right:1rem}
+  .head-tools .lang{margin-left:0;margin-right:.5rem}
+@media (min-width:768px) {
+  .hscroll .card + .card{margin-right:0;margin-left:0}
 }
-@media (min-width:960px){
-  .grid2,.hscroll{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (min-width:768px) {
+  .page-list .search{margin-right:0;margin-left:var(--pad)}
 }
-@media (min-width:960px), (min-width:600px) and (orientation:landscape){
-  .detail-cols{display:flex;align-items:flex-start;padding:0 var(--pad)}
-  .detail-cols .d-media{flex:0 0 52%;max-width:52%;margin-right:1.5rem}
-  .detail-cols .gallery{border-radius:22px;border:1px solid var(--line-dark)}
-  .detail-cols .d-info{flex:1;min-width:0}
-  .detail-cols .sheet{padding:0 0 .5rem}
-  .detail-cols .block{margin-left:0;margin-right:0}
-  .page-detail{padding-top:1.25rem}
+@media (min-width:960px), (min-width:600px) and (orientation:landscape) {
+  .detail-cols .d-media{margin-left:0;margin-right:1.5rem}
 }
-@media (min-width:1240px){
-  .grid2,.hscroll{grid-template-columns:repeat(5,minmax(0,1fr))}
-  .list{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (min-width:768px), (min-width:540px) and (orientation:landscape) {
+  .nav,.app[data-s="add"] .nav,.app[data-s="detail"] .nav,.app[data-s="thread"] .nav,.app[data-s="login"] .nav{border-left:none;border-right:1px solid var(--line-dark)}
 }
-
-/* ---------- الأجهزة اللوحية والحاسوب والهاتف الأفقي: شريط تنقل جانبي على اليمين ---------- */
-@media (min-width:768px), (min-width:540px) and (orientation:landscape){
-  .app{flex-direction:row}
-  .nav,.app[data-s="add"] .nav,.app[data-s="detail"] .nav,.app[data-s="thread"] .nav,.app[data-s="login"] .nav{
-    order:0;display:flex;flex-direction:column;align-items:stretch;flex:0 0 5.75rem;width:5.75rem;padding:.75rem .5rem;overflow-y:auto;
-    border-top:0;border-right:1px solid var(--line-dark);background:rgba(26,15,8,.78);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-  .app[data-s="splash"] .nav{display:none}
-  .nav button{flex:none;padding:.6rem 0;margin-bottom:.25rem;border-radius:14px}
-  .nav button[aria-current="page"]{background:rgba(230,189,116,.14)}
-  .nav .orb{margin-top:0;width:2.75rem;height:2.75rem;border:0}
-  .nav .orb .ic{width:1.5rem;height:1.5rem}
-  .toast{bottom:1.5rem}
+@media (min-width:1100px) and (min-height:520px) {
+  .nav-brand div{margin-right:0;margin-left:.7rem}
 }
-@media (min-width:768px) and (min-height:520px){
-  .nav-brand{display:flex;justify-content:center;color:var(--gold);padding:.4rem 0 1rem}
-  .nav-brand svg{width:2.9rem;height:2.5rem}
-  .nav-brand div{display:none}
-}
-@media (min-width:1100px) and (min-height:520px){
-  .nav,.app[data-s="add"] .nav,.app[data-s="detail"] .nav,.app[data-s="thread"] .nav,.app[data-s="login"] .nav{flex-basis:15rem;width:15rem;padding:1.25rem 1rem}
-  .nav-brand{justify-content:flex-start;align-items:center;padding:.25rem .5rem 1.5rem}
-  .nav-brand div{display:block;margin-left:.7rem}
-  .nav-brand b{display:block;font-size:1.4rem;font-weight:800;line-height:1.15;color:var(--on-dark)}
-  .nav button{flex-direction:row;font-size:1rem;padding:.75rem .9rem}
+@media (min-width:1100px) and (min-height:520px) {
   .nav button .ic{margin:0 .75rem 0 0}
-  .nav .add{margin:.5rem 0 .75rem;justify-content:center;color:#2a190e;font-weight:700;border-radius:999px;
-    background:#d6a557;background:linear-gradient(-180deg,#f6dca6 0%,#d6a557 55%,#a8742f 100%);box-shadow:0 8px 20px rgba(0,0,0,.35)}
-  .nav .orb{width:auto;height:auto;background:none;box-shadow:none;margin:0 .5rem 0 0}
-  .nav .add[aria-current="page"]{color:#2a190e;background:#d6a557;background:linear-gradient(-180deg,#f6dca6 0%,#d6a557 55%,#a8742f 100%)}
-  .home-head .logo{visibility:hidden}
 }
-/* هاتف أفقي قصير: تقليص الارتفاعات */
-@media (max-height:440px){
-  .hero{height:8.5rem} .hero-text p{display:none}
-  .sp-main{padding-top:1rem} .sp-main>svg{width:3.25rem;height:2.8rem} .sp-main h1{font-size:2rem}
-  .nav button{padding:.3rem 0;margin-bottom:.1rem;font-size:.6875rem}
+@media (min-width:1100px) and (min-height:520px) {
+  .nav .add{background:linear-gradient(-180deg,#f6dca6 0%,#d6a557 55%,#a8742f 100%)}
 }
-/* ---------- تحسينات التجاوب: أهداف لمس 44px وحد أدنى 12px للخط ---------- */
-.round-btn{min-width:44px;min-height:44px}
-.fav::after{content:"";position:absolute;top:-4px;left:-4px;bottom:-4px;right:-4px}
-.pill,.pill.icon{min-height:44px}
-.pill.icon{min-width:44px}
-.chip,.seg button,.sec-head button,.hero-cta,.sp-login,.lang,.linkbtn{min-height:44px}
-.btn{min-height:max(3.25rem,44px)}
-.actions .btn,.wiz-nav .btn,.social .btn{min-height:max(3.1rem,44px)}
-.fbtns .btn{min-height:max(3rem,44px)}
-.rowlist time,.rowlist .end,.badge,.dot,.price small,.meta,.chip-s{font-size:max(.75rem,12px)}
-.count,.sp-note,.sp-stats,.loc-chip,.lang,.seller small,.rowlist small,.me small,.review small,.stats span,.gallery .counter{font-size:max(.8125rem,12px)}
-.search button{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;margin-inline:-.5rem}
-.chip{min-width:44px;justify-content:center}
-.nav button,.photo .slot,.splash-cats button{font-size:max(.75rem,12px)}
-@media (min-width:768px) and (max-width:959px) and (orientation:portrait){ .gallery .photo{padding-top:56%} }
-@media (min-width:1600px){ .list{grid-template-columns:repeat(4,minmax(0,1fr))} }
-/* ---------- تحسينات الواجهة: حالات التفاعل، التحميل، الأخطاء، التنقل ---------- */
-button,.card,.chip,.pill{transition:background-color .15s,color .15s,border-color .15s,box-shadow .15s,transform .12s,opacity .15s,filter .15s}
-@media (hover:hover){
-  .btn-gold:hover,.hero-cta:hover{filter:brightness(1.07)}
-  .btn-ghost:hover,.btn-apple:hover{filter:brightness(1.18)}
-  .btn-light:hover,.btn-google:hover{filter:brightness(.95)}
-  .chip:hover,.pill:hover,.lang:hover,.round-btn:hover{border-color:var(--gold)}
-  .card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.28)}
-  .nav button:hover{color:var(--on-dark)}
-  .rowlist>button:hover{background:rgba(246,226,190,.06)}
-  .sec-head button:hover,.linkbtn:hover,.sp-login:hover{color:var(--on-dark)}
+@media (min-width:1100px) and (min-height:520px) {
+  .nav .orb{margin:0 .5rem 0 0}
 }
-.btn:active,.hero-cta:active,.chip:active,.pill:active,.lang:active,.round-btn:active,.fav:active,.nav button:active,.sp-login:active{transform:scale(.97)}
-.card:active{transform:scale(.985)}
-.rowlist>button:active{background:rgba(246,226,190,.1)}
-.btn:disabled,.btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed;transform:none}
-.err{border-inline-start:3px solid #b3321a;line-height:1.5}
-.form .hint{line-height:1.5}
-.thumbs .t.new.busy label{opacity:.7}
-.thumbs .t.new.busy input{pointer-events:none}
-@media (prefers-reduced-motion:no-preference){ .thumbs .t.new.busy .ic{animation:busy-pulse 1s ease-in-out infinite} }
-@keyframes busy-pulse{50%{opacity:.35}}
-@media (prefers-reduced-motion:reduce){ button,.card,.chip,.pill{transition:none} .card:hover,.card:active,.btn:active{transform:none} }
-.nav button[aria-current="page"]{box-shadow:inset 0 2px 0 var(--gold)}
-@media (min-width:768px), (min-width:540px) and (orientation:landscape){ .nav button[aria-current="page"]{box-shadow:none} }
-/* ---------- مؤشر تركيز أوضح للحقول، وزر «عرض المزيد» ---------- */
-.field input:focus-visible,.field textarea:focus-visible,.field select:focus-visible,.composer input:focus-visible{outline:2px solid var(--gold-deep);outline-offset:1px}
-.composer input:focus-visible{outline-color:var(--gold)}
-.field [aria-invalid="true"]{border-color:#b3321a}
-.list + .more{margin:1rem var(--pad) 0;width:auto;align-self:stretch}
-/* ---------- صور توضيحية للإعلانات بلا صور، وزر الاتصال المربع ---------- */
-.photo .art{color:#4a2a12;background-image:radial-gradient(circle at 30% 25%,rgba(255,255,255,.45),transparent 55%),radial-gradient(rgba(74,42,18,.10) 1px,transparent 1.2px);background-size:auto,14px 14px}
-.photo .art.t0{background-color:#e3c38f}.photo .art.t1{background-color:#d9a982}.photo .art.t2{background-color:#c9c49a}
-.photo .art.t3{background-color:#e7cfa6}.photo .art.t4{background-color:#d6b48c}.photo .art.t5{background-color:#cdb9a0}
-.photo .art .cimg{width:38%;height:auto;max-width:9rem;margin:0;filter:drop-shadow(0 6px 10px rgba(74,42,18,.22))}
-.photo .art span{position:absolute;bottom:.5rem;inset-inline-end:.6rem;padding:.05rem .5rem;border-radius:999px;background:rgba(255,250,240,.7);color:#5a3a1e;font-size:max(.75rem,12px)}
-.actions .btn-sq{flex:0 0 auto;width:3.1rem;min-width:44px;padding:0}
-.actions .btn-sq .ic{margin:0}
-
-/* إضافات خاصة بالإنجليزية */
-.ic.dir{-webkit-transform:scaleX(-1);transform:scaleX(-1)}
-.home-head .logo b{font-size:1.2rem}
-.home-head .logo svg{width:2.3rem;height:2rem}
-.nav-brand b{font-size:1.05rem}
+@media (min-width:1100px) and (min-height:520px) {
+  .nav .add[aria-current="page"]{background:linear-gradient(-180deg,#f6dca6 0%,#d6a557 55%,#a8742f 100%)}
+}
+  .ic.dir{-webkit-transform:scaleX(-1);transform:scaleX(-1)}
+  .home-head .logo b{font-size:1.2rem}
+  .home-head .logo svg{width:2.3rem;height:2rem}
+  .nav-brand b{font-size:1.05rem}
+@media (min-width:1100px) and (min-height:520px) {
+  .nav .orb{background:none}
+}
 </style>
 </head>
 <body>
@@ -1299,9 +844,9 @@ const FIELDS={
 };
 const PLACES=['العلا','مغيراء','العذيب','البريكة','الجديدة'];
 const SELLERS={
- s1:{name:'معرض الحجر للسيارات',rating:4.8,reviews:63,joined:2021,verified:true},
+ s1:{name:'معرض الحجر للسيارات',rating:4.8,reviews:63,joined:2021,verified:true,biz:'معرض سيارات'},
  s2:{name:'سالم العنزي',rating:4.6,reviews:18,joined:2022,verified:false},
- s3:{name:'مؤسسة واحة العلا العقارية',rating:4.9,reviews:41,joined:2020,verified:true},
+ s3:{name:'مؤسسة واحة العلا العقارية',rating:4.9,reviews:41,joined:2020,verified:true,biz:'عقار'},
  s4:{name:'خالد الجهني',rating:4.4,reviews:9,joined:2023,verified:false}
 };
 const car=(vtype,brand,model,year,km,gear,fuel,color,trim)=>{const s={'نوع الإعلان':'للبيع','الحالة':'مستعمل','نوع المركبة':vtype,'الماركة':brand,'الموديل':model,'سنة الصنع':String(year)}; if(trim) s['الفئة']=trim; return Object.assign(s,{'الممشى':km,'القير':gear,'الوقود':fuel,'اللون':color});};
@@ -1545,7 +1090,34 @@ const EN={
 'ياماها':'Yamaha',
 '10 أشخاص':'10 people',
 'عارضي':'Ardi',
-'صورة توضيحية':'Illustration','واتساب':'WhatsApp','في النسخة الفعلية يفتح واتساب مع البائع ومعه رسالة جاهزة عن الإعلان.':'In the live version this opens WhatsApp with the seller and a ready-made message about the ad.'
+'صورة توضيحية':'Illustration','واتساب':'WhatsApp','في النسخة الفعلية يفتح واتساب مع البائع ومعه رسالة جاهزة عن الإعلان.':'In the live version this opens WhatsApp with the seller and a ready-made message about the ad.',
+'فرد':'Individual',
+'منشأة':'Business',
+'نوع الحساب':'Account type',
+'للمعارض ومكاتب العقار والمزارع ومزودي الخدمات: صفحة متجر وشارة «منشأة موثقة».':'For dealerships, real-estate offices, farms and service providers: a store page and a “Verified business” badge.',
+'اسم المنشأة':'Business name',
+'مثل: معرض الحجر للسيارات':'e.g. Al-Hijr Motors',
+'رقم السجل التجاري':'Commercial registration no.',
+'10 أرقام':'10 digits',
+'اختر النشاط':'Choose activity',
+'معرض سيارات':'Car dealership',
+'عقار':'Real estate',
+'مزرعة وتمور':'Farm & dates',
+'سياحة وتأجير':'Tourism & rentals',
+'متجر':'Shop',
+'اسم المسؤول':'Contact person',
+'اسم الشخص المسؤول عن الحساب':'Name of the person managing the account',
+'اكتب اسم المنشأة.':'Enter the business name.',
+'اكتب رقم السجل التجاري من 10 أرقام.':'Enter the 10-digit commercial registration number.',
+'اختر نشاط المنشأة.':'Choose the business activity.',
+'تم تسجيل دخول المنشأة':'Business signed in',
+'منشأة موثقة':'Verified business',
+'سجل تجاري موثّق (تجريبي)':'Verified CR (demo)',
+'السجل التجاري':'CR',
+'المسؤول':'Contact',
+'تعذّر حفظ الإعلان. حاول مرة أخرى.':'Could not save the ad. Please try again.',
+'الإعلان غير موجود':'Ad not found','يلزم تسجيل الدخول':'Sign-in required','قسم غير معروف':'Unknown category','العنوان أقصر من 5 أحرف':'Title must be at least 5 characters.','يلزم صورة واحدة على الأقل':'At least one photo is required.','لا تملك هذا الإعلان':'You do not own this ad.','فضي':'Silver',
+'جارٍ التحميل…':'Loading…','تعذّر تحميل البيانات':'Could not load data','تحقق من الاتصال ثم أعد المحاولة.':'Check your connection and try again.','إعادة المحاولة':'Try again'
 };
 
 /* نصوص الواجهة */
@@ -1585,6 +1157,11 @@ const EN_RX=[
  [/^قبل (\d+) (?:أشهر|شهرًا|شهر)$/,r=>r[1]+' months ago'],
  [/^قبل (\d+) (?:سنوات|سنة)$/,r=>r[1]+' years ago'],
  [/^([\d,]+) مشاهدة$/,r=>r[1]+' views'],
+ [/^([\d,]+) كم$/,r=>r[1]+' km'],
+ [/^([\d,]+) م²$/,r=>r[1]+' m²'],
+ [/^([\d,]+) شتلة$/,r=>r[1]+' saplings'],
+ [/^([\d,]+) كجم$/,r=>r[1]+' kg'],
+ [/^حقول غير مسموح بتعديلها: (.+)$/,r=>'Fields that cannot be edited: '+r[1].split('، ').map(toEn).join(', ')],
  [/^ر\.س(?: (.+))?$/,r=>'SAR'+(r[1]?' '+toEn(r[1]):'')],
  [/^ابحث في (.+)$/,r=>'Search in '+toEn(r[1])],
  [/^النوع داخل (.+)$/,r=>'Type in '+toEn(r[1])],
@@ -1593,6 +1170,7 @@ const EN_RX=[
  [/^([\d.]+) \((\d+) تقييم\)$/,r=>r[1]+' ('+r[2]+' reviews)'],
  [/^عضو منذ (\d+)(، رقم جوال موثّق)?$/,r=>'Member since '+r[1]+(r[2]?', verified mobile':'')],
  [/^فلترة \((\d+) مفعّلة\)$/,r=>'Filter ('+r[1]+' active)'],
+ [/^نتيجة الصور: أضيفت (\d+)، ملفات غير صور (\d+)، تجاوزت 25 MB (\d+)، لم تتسع الخانات (\d+)، تعذّر فتحها (\d+)$/,r=>'Photos: added '+r[1]+', not images '+r[2]+', over 25 MB '+r[3]+', no space '+r[4]+', failed to open '+r[5]],
  [/^صورة (\d+)$/,r=>'Photo '+r[1]],
  [/^حذف الصورة (\d+)$/,r=>'Remove photo '+r[1]],
  [/^دخول عبر (.+)$/,r=>'Signed in with '+toEn(r[1])],
@@ -1606,6 +1184,150 @@ const EN_RX=[
 Object.assign(EN,{"سيارة ركاب":"Passenger Car","دفع رباعي":"SUV / 4x4","كوبيه / رياضية":"Coupe / Sports","فان / ميني فان":"Van / Minivan","بيك أب":"Pickup","شاحنة ثقيلة":"Heavy Truck","دينا / شاحنة خفيفة":"Light Truck","حافلة":"Bus","مركبة خاصة":"Special Vehicle","مقطورة":"Trailer","نوع المركبة":"Vehicle Type","كل الأنواع":"All types","اختر نوع المركبة":"Choose a vehicle type","اختر النوع أولًا":"Choose a type first","اختر الفئة":"Choose a trim","اختر نوع المركبة.":"Choose the vehicle type.","الفئات من كتالوج المركبات حسب النوع والماركة والموديل.":"Trims come from the vehicle catalog for this type, brand and model.","آي إم موتورز":"IM Motors","آي كار":"iCAR","أفاتار":"Avatr","إكس بنغ":"XPeng","إكسيد":"Exeed","إم هيرو":"M-Hero","أوبل":"Opel","أومودا":"Omoda","أيتو":"AITO","إيفيكو":"Iveco","إينيوس":"INEOS","أيون":"Aion","بروتون":"Proton","بوجاتي":"Bugatti","بورشه":"Porsche","بيستون":"Bestune","تاتا":"Tata","جاكوار":"Jaguar","جايكو":"Jaecoo","جي إيه سي":"GAC","جيدو":"Jidu","جينيسيس":"Genesis","داف":"DAF","دايهاتسو":"Daihatsu","دايو":"Daewoo","دونغ فينغ":"Dongfeng","ديبال":"Deepal","دينزا":"Denza","روكس":"Rox","روي":"Roewe","ريدارا":"Riddara","ريفيان":"Rivian","رينو للشاحنات":"Renault Trucks","زد إكس أوتو":"ZX Auto","زيكر":"Zeekr","سانج يونج":"SsangYong","ساوايست":"Soueast","ستروين":"Citroën","سكانيا":"Scania","سكاي ويل":"Skywell","سمارت":"Smart","سيريس":"Seres","شاومي":"Xiaomi","شفروليه":"Chevrolet","فاو":"FAW","فريلاندر":"Freelander","فوتون":"Foton","فورثينج":"Forthing","فولفو للشاحنات":"Volvo Trucks","فويا":"Voyah","في جي في":"VGV","فينفاست":"VinFast","كايي":"Kaiyi","كوبرا":"Cupra","كوينيجسيج":"Koenigsegg","لامبورجيني":"Lamborghini","لوتس":"Lotus","لي أوتو":"Li Auto","ليب موتور":"Leapmotor","لينك آند كو":"Lynk & Co","لينكولن":"Lincoln","ماكسوس":"Maxus","مان":"MAN","مرسيدس بنز للشاحنات":"Mercedes-Benz Trucks","مكلارين":"McLaren","ميتسوبيشي فوسو":"Mitsubishi Fuso","ميركوري":"Mercury","نيو":"NIO","همر":"Hummer","هونشي":"Hongqi","هينو":"Hino","وولينغ":"Wuling","يانغ وانغ":"Yangwang","يو دي للشاحنات":"UD Trucks","عام (بدون ماركة)":"Generic (no brand)","كومفورت":"Comfort","لكشري":"Luxury","هايبرد قابل للشحن":"Plug-in Hybrid","ستاندرد":"Standard","ديلوكس":"Deluxe","جي ديلوكس":"G Deluxe","بلاك إديشن":"Black Edition","غمارة":"Single Cab","غمارتين":"Double Cab","بلس":"Plus","كاريرا":"Carrera","توربو":"Turbo","تورينج":"Touring","بريميوم":"Premium","ليمتد":"Limited","إكزكتيف":"Executive","دينا 150":"Dyna 150","دينا 200":"Dyna 200","دينا 300":"Dyna 300","أدفنتشر":"Adventure","سبورت":"Sport","GT سبورت":"GT Sport","دايناميك":"Dynamic","لوميير":"Lumiere","جراندي":"Grande","بلاتينيوم":"Platinum","ماجيستا":"Majesta","XLI إكزكتيف":"XLI Executive","20 راكباً":"20-seater","23 راكباً":"23-seater","فان":"Van","كوميوتر":"Commuter","GR سبورت":"GR Sport","Y بلس":"Y Plus","دينالي":"Denali","إليفيشن":"Elevation","إديشن 1":"Edition 1","أساسية":"Base","أدفانسد":"Advanced","تريند":"Trend","دلتا":"Delta","سيجما":"Sigma","أوميجا":"Omega","إيليت":"Elite","كلاسيك":"Classic","رويال":"Royal","بريمير":"Premier","أكتيف":"Active","تريل بوس":"Trail Boss","أمبيانتي":"Ambiente","أكتيف كومفورت":"Active Comfort","ستيلث":"Stealth","تريمور":"Tremor","تيتانيوم":"Titanium","بيج بيند":"Big Bend","أوتر بانكس":"Outer Banks","وايلدتراك":"Wildtrak","بادلاندز":"Badlands","رابتر":"Raptor","كاستم":"Custom","فاستباك":"Fastback","دارك هورس":"Dark Horse","سيليكت":"Select","لاريات":"Lariat","دولتشي فيتا":"Dolce Vita","LX سبورت":"LX Sport","إكس لاين":"X-Line","EX فل":"EX Full","كور":"Core","إجنايت":"Ignite","إجنايت إديشن":"Ignite Edition","فل أوبشن":"Full Option","جريد 3":"Grade 3","هاي بلس":"High Plus","إن-تريك":"N-Trek","بانل فان":"Panel Van","ميكروباص":"Microbus","SE تيتانيوم":"SE Titanium","SE تيتانيوم بلس":"SE Titanium Plus","LE تيتانيوم":"LE Titanium","LE تيتانيوم بلس":"LE Titanium Plus","بلاتينيوم سيتي":"Platinum City","سوبر سفاري":"Super Safari","أكتيف بلس":"Active Plus","ديجنيتي":"Dignity","سوبر ديجنيتي":"Super Dignity","تايب R":"Type R","واجن":"Wagon","إكسكلوسف":"Exclusive","كاليغرافي":"Calligraphy","فليت":"Fleet","ألتيميت":"Ultimate","سمارت بلس":"Smart Plus","دي بي 11":"DB11","دي بي 12":"DB12","دي بي إس":"DBS","دي بي إكس":"DBX","رابيد إس":"Rapide S","فانتاج":"Vantage","فانكويش":"Vanquish","جوليا":"Giulia","جوليتا":"Giulietta","ستيلفيو":"Stelvio","إتش إس":"HS","إم جي 4 EV":"MG4 EV","إم جي ون":"MG One","إم جي GT":"MG GT","زد إس":"ZS","مارفل R":"Marvel R","ويل":"Whale","MG8 هايبرد قابل للشحن":"MG8 Plug-in Hybrid","إف إكس":"FX","فئة G":"G Series","فئة M":"M Series","أسترا":"Astra","ريكورد":"Rekord","الفئة F":"F-Series","الفئة N (إن بي آر)":"N-Series (NPR)","إم يو إكس":"MU-X","جيجا":"Giga","دي ماكس":"D-Max","فوروارد":"Forward","إس واي":"S-Way","إكس واي":"X-Way","تي واي":"T-Way","يوروكارجو":"Eurocargo","جرينادير":"Grenadier","في":"V","واي":"Y","واي بلس":"Y Plus","يو تي":"UT","بي جي 40":"BJ40","بي جي 60":"BJ60","بي جي 80":"BJ80","بيرسونا":"Persona","جين 2":"Gen-2","واجا":"Waja","أرناج":"Arnage","أزور":"Azure","بروكلاندز كوبيه":"Brooklands Coupe","بنتايجا":"Bentayga","فلاينج سبير":"Flying Spur","كونتيننتال جي تي":"Continental GT","كونتيننتال جي تي سي":"Continental GTC","كونتيننتال فلاينج سبير":"Continental Flying Spur","مولسان":"Mulsanne","توربيون":"Tourbillon","شيرون":"Chiron","بوكستر":"Boxster","كايمان":"Cayman","الفئة السادسة":"6 Series","أتو 3":"Atto 3","أتو 8":"Atto 8","تشين بلس":"Qin Plus","سونغ بلس":"Song Plus","سي ليون 7":"Sealion 7","سيل":"Seal","شارك 6":"Shark 6","هان":"Han","إكسبرت":"Expert","بوكسر":"Boxer","ترافلر":"Traveller","ريفتر":"Rifter","لاندتريك":"Landtrek","زينون":"Xenon","سايبرترك":"Cybertruck","موديل 3":"Model 3","موديل S":"Model S","موديل X":"Model X","موديل Y":"Model Y","إف جي كروزر":"FJ Cruiser","أفانزا":"Avanza","أوريون":"Aurion","بريفيا":"Previa","دينا":"Dyna","سي إتش آر":"C-HR","كرسيدا":"Cressida","كوستر":"Coaster","لاند كروزر 70 بيك أب (شاص)":"Land Cruiser 70 Pickup (Shas)","لاند كروزر 70 ربع":"Land Cruiser 70 Short (Rabea)","لاند كروزر 70 هاردتوب 5 أبواب":"Land Cruiser 70 Hardtop 5-door","لاند كروزر 200":"Land Cruiser 200","لاند كروزر 300":"Land Cruiser 300","لاند كروزر برادو":"Land Cruiser Prado","لايت إيس":"LiteAce","هايس":"HiAce","آي بيس":"I-Pace","إس تايب":"S-Type","إف بيس":"F-Pace","إف تايب":"F-Type","إكس تايب":"X-Type","إي بيس":"E-Pace","باور":"Poer","وينجل 5":"Wingle 5","وينجل 6":"Wingle 6","وينجل 7":"Wingle 7","همر EV بيك أب":"Hummer EV Pickup","همر EV دفع رباعي":"Hummer EV SUV","يوكن XL":"Yukon XL","إمباو":"Empow","إمزوم":"Emzoom","إمكو":"Emkoo","هايبتك SSR":"Hyptec SSR","جلادياتور":"Gladiator","كوماندر":"Commander","ليبرتي":"Liberty","داشينج":"Dashing","روبو-01":"Robo-01","أزكارا":"Azkarra","إمجراند 7":"Emgrand 7","إمجراند GS":"Emgrand GS","إمجراند X7":"Emgrand X7","باندا":"Panda","بريفيس":"Preface","بينراي":"Binray","جيومتري C":"Geometry C","سيتي راي":"Cityray","GX3 برو":"GX3 Pro","تيريوس":"Terios","سيريون":"Sirion","ماتيريا":"Materia","لانوس":"Lanos","ليجانزا":"Leganza","ماتيز":"Matiz","نوبيرا":"Nubira","إنتربد":"Intrepid","فايبر":"Viper","كارافان":"Caravan","كاليبر":"Caliber","نيترو":"Nitro","نيون":"Neon","شاين":"Shine","شاين ماكس":"Shine Max","ميج":"Mage","هيوج":"Huge","A60 ماكس":"A60 Max","AX7 ماك":"AX7 Mach","أداماس":"Adamas","جوست":"Ghost","داون":"Dawn","رايث":"Wraith","سبيكتر":"Spectre","فانتوم":"Phantom","كولينان":"Cullinan","دوكر فان":"Dokker Van","سافران":"Safrane","فلوانس":"Fluence","كليو":"Clio","لاجونا":"Laguna","ماستر":"Master","إي-تك T":"E-Tech T","أدميرال":"Admiral","جراند تايجر":"Grand Tiger","أكتيون":"Actyon","توريس":"Torres","تيفولي":"Tivoli","ريكستون":"Rexton","كوراندو":"Korando","موسو":"Musso","إكسارا":"Xsara","برلنجو":"Berlingo","الفئة G":"G-Series","الفئة P":"P-Series","الفئة R":"R-Class","الفئة S":"S-Class","أوكتافيا":"Octavia","رابيد":"Rapid","سوبيرب":"Superb","فابيا":"Fabia","كاروك":"Karoq","كودياك":"Kodiaq","إمبريزا":"Impreza","أوتباك":"Outback","فورستر":"Forester","ليجاسي":"Legacy","جراند فيتارا":"Grand Vitara","ساموراي":"Samurai","سيليريو":"Celerio","كيزاشي":"Kizashi","ليانا":"Liana","APV بيك أب":"APV Pickup","APV فان":"APV Van","ألسفن":"Alsvin","إيدو بلس":"Eado Plus","يوني إس":"UNI-S","يوني تي":"UNI-T","يوني في":"UNI-V","يوني كي":"UNI-K","CS35 بلس":"CS35 Plus","CS75 بلس":"CS75 Plus","أبلاندر":"Uplander","إبيكا":"Epica","أسترو فان":"Astro Van","أفالانش":"Avalanche","أفيو":"Aveo","إكسبرس فان":"Express Van","إكوينوكس":"Equinox","أونيكس":"Onix","بولت":"Bolt","تريل بليزر":"Trailblazer","جي فان":"G-Van","سونيك":"Sonic","فنشر":"Venture","كافالير":"Cavalier","كروز":"Cruze","كولورادو":"Colorado","لومينا":"Lumina","أريزو 3":"Arrizo 3","إيستار":"Eastar","كوين":"Cowin","كيو كيو":"QQ","أولي":"Oley","فريلاندر 8":"Freelander 8","تونلاند":"Tunland","فرايدي EV":"Friday EV","T5 إيفو":"T5 Evo","إسكورت":"Escort","إكسبيديشن":"Expedition","إيكو سبورت":"EcoSport","برونكو سبورت":"Bronco Sport","توروس":"Taurus","تيريتوري":"Territory","ثندربيرد":"Thunderbird","فليكس":"Flex","فيجو":"Figo","كراون فكتوريا":"Crown Victoria","موستانج ماك-إي":"Mustang Mach-E","مونديو":"Mondeo","ويندستار":"Windstar","أرتيون":"Arteon","أماروك":"Amarok","بولو":"Polo","بيتل":"Beetle","تي روك":"T-Roc","شيروكو":"Scirocco","باشن":"Passion","دريم":"Dream","فري":"Free","U70 برو":"U70 Pro","U75 بلس":"U75 Plus","فيورينو":"Fiorino","لينيا":"Linea","296 جي تي بي":"296 GTB","488 بيستا":"488 Pista","إس إف 90":"SF90","بوروسانجوي":"Purosangue","جي تي سي 4 لوسو":"GTC4Lusso","روما":"Roma","مونزا":"Monza","ديفيل":"DeVille","فليتوود":"Fleetwood","كونكورس":"Concours","X3 برو":"X3 Pro","إمبريال":"Imperial","باسيفيكا":"Pacifica","بي تي كروزر":"PT Cruiser","جراند فويجر":"Grand Voyager","فويجر":"Voyager","كروس فاير":"Crossfire","كونكورد":"Concorde","أتيكا":"Ateca","فورمنتور":"Formentor","ليون":"Leon","جيسكو":"Jesko","جيميرا":"Gemera","أوبتيما":"Optima","أوبيروس":"Opirus","تاسمان":"Tasman","ستونيك":"Stonic","سول":"Soul","سونيت":"Sonet","سيفيا":"Sephia","كادينزا":"Cadenza","كوريس":"Quoris","موهافي":"Mohave","نيرو":"Niro","أفينتادور":"Aventador","أوروس":"Urus","جالاردو":"Gallardo","ريفويلتو":"Revuelto","هوراكان":"Huracán","رنج روفر":"Range Rover","رنج روفر إيفوك":"Range Rover Evoque","رنج روفر سبورت":"Range Rover Sport","رنج روفر فيلار":"Range Rover Velar","إليتري":"Eletre","إميرا":"Emira","إيميا":"Emeya","إير":"Air","جرافيتي":"Gravity","ميجا":"Mega","03 بلس":"03 Plus","أفياتور":"Aviator","تاون كار":"Town Car","كورسير":"Corsair","كونتيننتال":"Continental","نافيجيتور":"Navigator","نوتيلوس":"Nautilus","آر إكس 8":"RX-8","إم إكس 5":"MX-5","إم بي في":"MPV","مازدا 2":"Mazda 2","مازدا 5":"Mazda 5","جران توريزمو":"GranTurismo","جريكالي":"Grecale","جيبلي":"Ghibli","كواتروبورتي":"Quattroporte","ليفانتي":"Levante","ديليفر 9":"Deliver 9","D90 برو":"D90 Pro","الفئة A":"A-Class","الفئة B":"B-Class","الفئة C":"C-Class","الفئة E":"E-Class","الفئة G (جي كلاس)":"G-Class","الفئة V":"V-Class","إيه إم جي GT":"AMG GT","سبرنتر":"Sprinter","مايباخ":"Maybach","أتيجو":"Atego","أروكس":"Arocs","أكتروس":"Actros","إي أكتروس":"eActros","إيكونيك":"Econic","أرتورا":"Artura","جي تي":"GT","إكسباندر كروس":"Xpander Cross","إل 200":"L200","جالانت":"Galant","جرانديس":"Grandis","ديستينيتور":"Destinator","سبيس ستار":"Space Star","كولت":"Colt","ماجنا":"Magna","مونتيرو":"Montero","ناتيفا":"Nativa","روزا":"Rosa","فايتر":"Fighter","كانتر":"Canter","جراند ماركيز":"Grand Marquis","مارودر":"Marauder","ماونتينير":"Mountaineer","كنتريمان":"Countryman","كوبر":"Cooper","أريا":"Ariya","إكستيرا":"Xterra","باترول بيك أب (شاص)":"Patrol Pickup (Shas)","باترول سفاري":"Patrol Safari","بريميرا":"Primera","تيدا":"Tiida","تيرانو":"Terrano","تيكتون":"Tekton","جلوريا":"Gloria","جي تي آر":"GT-R","زد":"Z","سكاي لاين":"Skyline","سيدريك":"Cedric","سيفيليان":"Civilian","قاشقاي":"Qashqai","ليف":"Leaf","ماجنايت":"Magnite","ميكرا":"Micra","جوليان":"Jolion","جوليان برو":"Jolion Pro","إتش آر في":"HR-V","إنتيجرا":"Integra","بريلود":"Prelude","زد آر في":"ZR-V","سي آر في":"CR-V","ليجند":"Legend","أوسادو":"Ousado","الفئة 300":"300 Series","الفئة 500":"500 Series","الفئة 700":"700 Series","إتش 1":"H-1","تراجيت":"Trajet","تيراكان":"Terracan","جالوبر":"Galloper","جراند سنتافي":"Grand Santa Fe","جراند كريتا":"Grand Creta","جراند i10":"Grand i10","ستارجيزر":"Stargazer","سنتينيال":"Centennial","فيراكروز":"Veracruz","كوبيه (تيبورون)":"Coupe (Tiburon)","ماتريكس":"Matrix","ألماز":"Almaz","إير EV":"Air EV","هونغ قوانغ":"Hongguang","كرونر":"Croner","كوزر":"Kuzer","كويستر":"Quester","إسعاف":"Ambulance","حفار":"Excavator","خلاطة خرسانة":"Concrete Mixer","رافعة شوكية":"Forklift","رافعة متحركة":"Mobile Crane","سطحة / ونش سحب":"Flatbed / Tow Truck","سيارة إطفاء":"Fire Truck","شاحنة نفايات":"Garbage Truck","مقطورة ستارة":"Curtain-side Trailer","مقطورة سطحة":"Flatbed Trailer","مقطورة صندوق":"Box Trailer","مقطورة صهريج":"Tanker Trailer","مقطورة قلاب":"Tipper Trailer","مقطورة لوبد":"Lowbed Trailer","مقطورة مبردة":"Refrigerated Trailer","مقطورة ناقلة سيارات":"Car Carrier Trailer"});
 /* أسماء يتغير معناها حسب الماركة */
 const EN_CTX={"سكانيا": {"الفئة R": "R-Series", "الفئة S": "S-Series"}};
+/* =====================================================================
+   api.js — طبقة الوصول إلى البيانات (المرحلة الأولى: المحوّل المحلي فقط)
+   ---------------------------------------------------------------------
+   الغرض: واجهة واحدة تمر عبرها قراءة البيانات وكتابتها، حتى يمكن لاحقًا
+   استبدال المحوّل المحلي بمحوّل خادم دون تغيير منطق الواجهة.
+
+   مهم:
+   - هذا المحوّل محلي بالكامل: البيانات في ذاكرة الصفحة وlocalStorage وIndexedDB
+     لمتصفح واحد. ليس قاعدة بيانات مشتركة، ولا يوجد أي اتصال بالشبكة.
+   - API.isShared = false صراحةً، فلا يُفترض أن النظام متعدد المستخدمين.
+   - العمليات التي تحتاج خادمًا (المصادقة الحقيقية، البلاغات) تُرجع
+     not_supported بدل محاكاة نجاح وهمي.
+   - كل الدوال غير متزامنة (Promise) حتى يبقى شكلها ثابتًا عند إضافة محوّل خادم.
+   - النتيجة دائمًا { ok:true, data } أو { ok:false, error:{ code, message } }.
+   - لا تلمس الواجهة: لا render ولا toast. العرض مسؤولية tail2.js.
+
+   الاعتماد: يُحمَّل بعد tail2.js في السياق نفسه، ويستخدم حالته العامة
+   (S، ADS، NOTIFS، CATS، PLACES) ودواله (ad، live، isMine، uid، results، sellerInfo، save، PDB).
+   ===================================================================== */
+const API=(()=>{
+  /* الدوال الداخلية ترجع نتيجة عادية؛ الواجهة العامة تغلّفها في Promise.
+     القراءات متاحة أيضًا فوريًا عبر API.now لأن المحوّل المحلي يملك البيانات في الذاكرة،
+     وهذا ما يسمح للواجهة بالعرض دون مرحلة تحميل. أي محوّل خادم لاحقًا لن يوفّر now. */
+  const ok=data=>({ok:true,data});
+  const fail=(code,message)=>({ok:false,error:{code,message}});
+  const guard=fn=>(...a)=>{ try{ return fn(...a); }catch(e){ return fail('local_error',String(e&&e.message||e)); } };
+  let rev=0;   /* رقم مراجعة البيانات: يزيد بعد كل كتابة ناجحة، لتعرف الواجهة متى تعيد القراءة */
+  const asy=fn=>{ const g=guard(fn); return (...a)=>Promise.resolve(g(...a)); };
+  const mut=fn=>{ const g=guard(fn); return (...a)=>{ const r=g(...a); if(r.ok) rev++; return Promise.resolve(r); }; };
+
+  /* نسخة للقراءة: الواجهة لا تعدّل المخزن عبر الكائن المُرجع */
+  const copyAd=a=>a?Object.assign({},a,{specs:Object.assign({},a.specs),photos:(a.photos||[]).slice()}):null;
+
+  /* حقول التعديل المسموح بها للمالك (لا يغيّر المالك ولا المعرّف ولا الإحصاءات) */
+  const EDITABLE=['cat','sub','title','price','loc','desc','specs','photos','cond','deal','vtype','brand','model','year','nego','phone','chat','call','unit'];
+
+  /* القائمة: تستخدم results() الحالية حرفيًا لضمان النتائج نفسها التي تعرضها الواجهة،
+     مع إعادة حالة البحث في S كما كانت بعد الاستدعاء (بلا أثر جانبي) */
+  const LIST_KEYS=['cat','sub','q','loc','sort','f'];
+  function listListings(o){
+    o=o||{};
+    const saved={}; LIST_KEYS.forEach(k=>{ saved[k]=S[k]; });
+    let all;
+    try{
+      S.cat=o.cat||null; S.sub=o.sub||''; S.q=String(o.q||'').trim().slice(0,60); S.loc=o.loc||''; S.sort=o.sort||'new';
+      S.f=Object.assign(noFilter(),o.filters||{});
+      all=results();
+    } finally { LIST_KEYS.forEach(k=>{ S[k]=saved[k]; }); }
+    const offset=Math.max(0,o.offset|0), limit=o.limit>0?o.limit|0:all.length;
+    return ok({items:all.slice(offset,offset+limit).map(copyAd),total:all.length,offset,limit});
+  }
+
+  function getListing(id){ const a=ad(id); return a?ok(copyAd(a)):fail('not_found','الإعلان غير موجود'); }
+
+  function myListings(){
+    if(!S.user) return fail('unauthenticated','يلزم تسجيل الدخول');
+    return ok(ADS.filter(isMine).map(copyAd));
+  }
+
+  /* إنشاء: يستدعيه publish() في tail2.js، فهو المصدر الوحيد لشكل الإعلان الجديد */
+  function createListing(data,opts){   /* opts.wiz: معالج الإعلان، لإبلاغه إن تعذّر حفظ الصور في IndexedDB (خاص بالمحوّل المحلي) */
+    if(!S.user) return fail('unauthenticated','يلزم تسجيل الدخول');
+    data=data||{};
+    if(!CATS.some(c=>c.id===data.cat)) return fail('invalid','قسم غير معروف');
+    if(String(data.title||'').trim().length<5) return fail('invalid','العنوان أقصر من 5 أحرف');
+    if(!Array.isArray(data.photos)||!data.photos.length) return fail('invalid','يلزم صورة واحدة على الأقل');
+    const id=Date.now(), rec={id,mins:1,created:id,views:0,seller:'me',owner:uid(),ownerName:S.user.biz?S.user.biz.name:S.user.name,ownerBiz:!!S.user.biz};
+    EDITABLE.forEach(k=>{ if(data[k]!==undefined) rec[k]=data[k]; });
+    rec.title=String(rec.title).trim(); rec.specs=Object.assign({},rec.specs); rec.photos=data.photos.slice();
+    ADS.unshift(rec); putPhotos(rec,opts&&opts.wiz);
+    const saved=save();
+    return ok({id,saved});
+  }
+
+  function updateListing(id,patch,opts){
+    const a=ad(id); if(!a) return fail('not_found','الإعلان غير موجود');
+    if(!isMine(a)) return fail('forbidden','لا تملك هذا الإعلان');
+    patch=patch||{};
+    const bad=Object.keys(patch).filter(k=>EDITABLE.indexOf(k)<0);
+    if(bad.length) return fail('invalid','حقول غير مسموح بتعديلها: '+bad.join('، '));
+    Object.assign(a,patch); if(patch.photos) { a.photos=patch.photos.slice(); putPhotos(a,opts&&opts.wiz); }
+    return ok({id:a.id,saved:save()});
+  }
+
+  /* مطابق لـ case 'sold' في tail2.js */
+  function setSold(id,sold){
+    const a=ad(id); if(!a) return fail('not_found','الإعلان غير موجود');
+    if(!isMine(a)) return fail('forbidden','لا تملك هذا الإعلان');
+    a.sold=!!sold; return ok({id:a.id,sold:a.sold,saved:save()});
+  }
+
+  /* مطابق لـ case 'del' في tail2.js (بلا خطوة التأكيد، فهي من مسؤولية الواجهة) */
+  function removeListing(id){
+    const n=+id, a=ad(n); if(!a) return fail('not_found','الإعلان غير موجود');
+    if(!isMine(a)) return fail('forbidden','لا تملك هذا الإعلان');
+    PDB.del('ad:'+n); ADS=ADS.filter(x=>x.id!==n); S.favs.delete(n);
+    NOTIFS=NOTIFS.filter(x=>!(x.to&&x.to[0]==='detail'&&x.to[1]===n));
+    return ok({id:n,saved:save()});
+  }
+
+  /* المفضلة: مطابق لـ case 'fav' في tail2.js */
+  function listFavorites(){ return ok(ADS.filter(a=>S.favs.has(a.id)).map(copyAd)); }
+  function isFavorite(id){ return ok(S.favs.has(+id)); }
+  function toggleFavorite(id){
+    const n=+id; if(!ad(n)) return fail('not_found','الإعلان غير موجود');
+    if(S.favs.has(n)) S.favs.delete(n); else S.favs.add(n);
+    return ok({id:n,favorite:S.favs.has(n),saved:save()});
+  }
+
+  /* الإعلانات المنشورة بترتيب التخزين (للرئيسية والبداية التي تختار وترتب بنفسها) */
+  function listPublic(){ return ok(live().map(copyAd)); }
+  /* إعلانات بائع: البائعون التجريبيون بالمعرّف، والمستخدم المحلي بالمعرّف 'me' مع مالك محدد */
+  function listSellerListings(sellerId,owner){ return ok(live().filter(a=>a.seller===sellerId&&(sellerId!=='me'||a.owner===owner)).map(copyAd)); }
+  /* بيانات البائع المعروضة (الاسم، التقييم، التوثيق التجريبي) */
+  function getSeller(sellerId,owner){ const s=sellerInfo(sellerId,owner); return ok(Object.assign({},s)); }
+  /* معرّفات المفضلة: مصدر واحد لحالة أزرار القلب */
+  function listFavoriteIds(){ return ok(Array.from(S.favs)); }
+
+  function listCategories(){ return ok(CATS.map(c=>({id:c.id,name:c.name,subs:c.subs.slice()}))); }
+  function listLocations(){ return ok(PLACES.slice()); }
+
+  function currentUser(){ return ok(S.user?JSON.parse(JSON.stringify(S.user)):null); }
+
+  /* تحتاج خادمًا: لا محاكاة نجاح */
+  const needsServer=what=>()=>Promise.resolve(fail('not_supported',what+' يتطلب خدمة خلفية، وهي غير مفعّلة في المحوّل المحلي'));
+
+  const READS={listListings,getListing,myListings,listFavorites,isFavorite,listFavoriteIds,listPublic,listSellerListings,getSeller,listCategories,listLocations,currentUser};
+  const now={}; Object.keys(READS).forEach(k=>{ now[k]=guard(READS[k]); });
+  return Object.freeze({
+    adapter:'local',
+    isShared:false,
+    get rev(){ return rev; },
+    /* تغيّرت البيانات من خارج الطبقة (تبويب آخر، تحميل صور، تبديل الحساب): أبطل القراءات المحفوظة */
+    touch(){ rev++; },
+    now:Object.freeze(now),   /* قراءة فورية: خاصة بالمحوّل المحلي */
+    listListings:asy(listListings), getListing:asy(getListing), myListings:asy(myListings),
+    createListing:mut(createListing), updateListing:mut(updateListing), setSold:mut(setSold), removeListing:mut(removeListing),
+    listFavorites:asy(listFavorites), isFavorite:asy(isFavorite), listFavoriteIds:asy(listFavoriteIds), toggleFavorite:mut(toggleFavorite),
+    listPublic:asy(listPublic), listSellerListings:asy(listSellerListings), getSeller:asy(getSeller),
+    listCategories:asy(listCategories), listLocations:asy(listLocations), currentUser:asy(currentUser),
+    signIn:needsServer('تسجيل الدخول الحقيقي'), signOut:needsServer('تسجيل الخروج من الخادم'),
+    reportListing:needsServer('الإبلاغ عن إعلان')
+  });
+})();
 /* ---------- بيانات إضافية ---------- */
 const REVIEWS={
   s1:[{by:'ماجد الحربي',stars:5,t:'تعامل راقٍ والسيارة مطابقة للوصف.'},{by:'عبدالعزيز الشمري',stars:5,t:'سرعة في الرد وسعر معقول.'},{by:'نواف العطوي',stars:4,t:'المعاينة تمت بسهولة، التأخير كان في نقل الملكية فقط.'}],
@@ -1619,7 +1341,8 @@ var NOTIFS=[
   {id:3,icon:'shield-check',t:'نصيحة أمان',s:'عاين المعروض بنفسك قبل تحويل أي مبلغ.',time:'الخميس',to:null,read:true}
 ];
 const fresh=()=>({saveFail:false,trimOther:false,step:0,err:'',cat:'',sub:'',deal:'',cond:'used',specs:{},photos:[],title:'',desc:'',price:'',nego:false,loc:'العلا',phone:S&&S.user&&S.user.phone?S.user.phone:'',chat:true,call:true,newId:null,editId:null});
-const newLogin=()=>({step:0,method:'phone',name:'',phone:'',email:'',code:'',err:''});
+const newLogin=()=>({step:0,method:'phone',kind:'person',name:'',phone:'',email:'',biz:'',cr:'',btype:'',code:'',err:''});
+const BTYPES=['معرض سيارات','عقار','مزرعة وتمور','سياحة وتأجير','متجر','خدمات','أخرى'];
 const noFilter=()=>({min:'',max:'',y1:'',y2:'',cond:'',deal:'',vtype:'',brand:'',model:''});
 
 /* ---------- state ---------- */
@@ -1683,7 +1406,8 @@ const typed=(o,k)=>{ const f=(FIELDS[o.cat]||[]).find(x=>x[0]===k); if(!f||Array
   const sp=o.specs||{}; return !(k==='الفئة'&&o.cat==='cars'&&carTrims(sp['الماركة'],sp['الموديل'],sp['نوع المركبة']).indexOf(sp[k])>-1); };
 const sellerInfo=(id,owner)=>{ if(id!=='me') return SELLERS[id]||SELLERS.s2;
   const own=owner===undefined?uid():owner, a=ADS.find(x=>x.seller==='me'&&x.owner===own);
-  return {user:true,name:(S.user&&own===uid()?S.user.name:(a&&a.ownerName))||'معلن',rating:null,reviews:0,joined:new Date().getFullYear(),verified:/^05/.test(own||'')}; };
+  const cur=S.user&&own===uid(), biz=cur?S.user.biz:(a&&a.ownerBiz?{type:''}:null);
+  return {user:true,name:(cur?(S.user.biz?S.user.biz.name:S.user.name):(a&&a.ownerName))||'معلن',rating:null,reviews:0,joined:new Date().getFullYear(),verified:!!biz||/^05/.test(own||''),biz:biz?(biz.type||true):false}; };
 
 /* ---------- حفظ البيانات في المتصفح: النصوص في localStorage (خانة لكل حساب)، والصور في IndexedDB لاتساعها ---------- */
 const KEY='haraj-alula-v5', DKEY='haraj-alula-draft', DEAD_KEYS=['haraj-alula-v3','haraj-alula-v2'], SAMPLE_ADS=ADS.slice(), SAMPLE_IDS=ADS.map(a=>a.id), DEF_CHATS=JSON.stringify(CHATS), DEF_NOTIFS=JSON.stringify(NOTIFS); let lastWarn=0;
@@ -1695,7 +1419,7 @@ function stash(){ PER[bkey()]={favs:Array.from(S.favs),chats:CHATS,notifs:NOTIFS
 function adopt(){ const b=PER[bkey()], g=PER.guest;
   if(b){ S.favs=new Set(b.favs); CHATS=b.chats; NOTIFS=b.notifs; }
   else { S.favs=new Set(g?g.favs:[]); CHATS=JSON.parse(DEF_CHATS); NOTIFS=JSON.parse(DEF_NOTIFS); } }
-function setUser(u){ draftSave(true); stash(); S.user=u; adopt(); S.wiz=draftLoad(); }
+function setUser(u){ draftSave(true); stash(); S.user=u; adopt(); S.wiz=draftLoad(); API.touch(); }   /* تغيّر الحساب يغيّر المفضلة والملكية */
 /* مخزن الصور: مفتاح «ad:رقم» لصور الإعلان و«draft:حساب» لصور المسودة */
 const PDB=(()=>{ let db=null;
   const ready=new Promise(res=>{ try{ const r=indexedDB.open('haraj-alula',1);
@@ -1705,7 +1429,7 @@ const PDB=(()=>{ let db=null;
     t.oncomplete=()=>res({ok:true,v:q&&q.result}); t.onerror=t.onabort=()=>res({ok:false}); }catch(e){ res({ok:false}); } }):{ok:false});
   return {set:(k,v)=>tx('readwrite',o=>o.put(v,k)), del:k=>tx('readwrite',o=>o.delete(k)), get:k=>tx('readonly',o=>o.get(k)), clear:()=>tx('readwrite',o=>o.clear())};
 })();
-const okPhotos=l=>(Array.isArray(l)?l:[]).filter(p=>typeof p==='string'&&/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+\/=]+$/.test(p)).slice(0,10);
+const okPhotos=l=>(Array.isArray(l)?l:[]).filter(p=>typeof p==='string'&&/^data:image\/(jpeg|png|webp|gif);base64,[A-Za-z0-9+/=]+$/.test(p)).slice(0,10);
 const quiet=()=>{ const x=document.activeElement; return !(x&&((x.tagName==='INPUT'&&x.type!=='checkbox')||x.tagName==='TEXTAREA')); };
 function warnFull(){ if(Date.now()-lastWarn>6000){lastWarn=Date.now();toast('تعذّر الحفظ: مساحة التخزين في المتصفح ممتلئة أو محجوبة.');} }
 function save(){
@@ -1719,7 +1443,7 @@ function putPhotos(a,w){ a.pdb=true;
 /* يجلب صور إعلاناتي من IndexedDB بعد بناء الحالة */
 function fillPhotos(){ const L=ADS.filter(a=>a.seller==='me'&&a.pdb); if(!L.length) return;
   Promise.all(L.map(a=>PDB.get('ad:'+a.id).then(r=>{ const ph=r.ok?okPhotos(r.v):[]; if(ph.length&&ph.join('').length!==a.photos.join('').length){ a.photos=ph; return 1; } return 0; })))
-    .then(n=>{ if(n.some(Boolean)&&S.screen!=='add'&&S.screen!=='login'&&quiet()) render(); }); }
+    .then(n=>{ if(!n.some(Boolean)) return; API.touch(); if(S.screen!=='add'&&S.screen!=='login'&&quiet()) render(); }); }   /* وصلت الصور من IndexedDB */
 /* ---------- مسودة الإعلان: تُحفظ مع كل تغيير وتعود بعد تحديث الصفحة، لكل حساب مسودته ---------- */
 const draftable=w=>!!(w&&!w.editId&&w.step<8&&w.cat);
 const phSig=l=>l.length?l.length+':'+l.reduce((n,p)=>n+p.length,0):'';
@@ -1727,7 +1451,7 @@ let dT=0, dOff=false; const dSig=Object.create(null), dOwn=Object.create(null);
 const drafts=()=>{ try{ const o=JSON.parse(localStorage.getItem(DKEY)||'{}'); return o&&typeof o==='object'?o:{}; }catch(e){ return {}; } };
 function draftSave(now){ clearTimeout(dT); if(dOff) return; if(!now){ dT=setTimeout(()=>draftSave(true),400); return; }
   const w=S.wiz, k=bkey(), all=drafts(), on=draftable(w)&&!!S.user;
-  if(on){ all[k]=Object.assign({},w,{photos:[],err:'',phWait:false,busy:false,pend:0}); dOwn[k]=1; } else if(dOwn[k]){ delete all[k]; dOwn[k]=0; } else return;   /* لا نمسح مسودة لم يفتحها هذا التبويب */
+  if(on){ all[k]=Object.assign({},w,{photos:[],err:'',phWait:false,busy:false,pend:0,publishing:false}); dOwn[k]=1; } else if(dOwn[k]){ delete all[k]; dOwn[k]=0; } else return;   /* لا نمسح مسودة لم يفتحها هذا التبويب */
   try{ localStorage.setItem(DKEY,JSON.stringify(all)); }catch(e){}
   if(w.phWait) return; const sig=on?phSig(w.photos):'';
   if(sig!==(dSig[k]||'')){ dSig[k]=sig; if(sig) PDB.set('draft:'+k,w.photos.slice()).then(r=>{ if(!r.ok) dSig[k]=''; }); else PDB.del('draft:'+k); } }
@@ -1757,7 +1481,7 @@ function fixAd(a,owner,ownerName,seen){
   const o={id:id,cat:cid,sub:c.subs.indexOf(sub)>-1?sub:'',title:str(a.title,70),desc:str(a.desc,800),
     price:typeof a.price==='number'&&isFinite(a.price)&&a.price>0?a.price:null,loc:PLACES.indexOf(a.loc)>-1?a.loc:PLACES[0],
     photos:okPhotos(a.photos),pdb:!!a.pdb,
-    views:+a.views||0,mins:+a.mins||1,created:+a.created||(id>1e12?id:Date.now()),seller:'me',owner:str(a.owner,80)||owner||'',ownerName:str(a.ownerName,30)||ownerName||'',
+    views:+a.views||0,mins:+a.mins||1,created:+a.created||(id>1e12?id:Date.now()),seller:'me',owner:str(a.owner,80)||owner||'',ownerName:str(a.ownerName,30)||ownerName||'',ownerBiz:!!a.ownerBiz,
     sold:!!a.sold,nego:!!a.nego,phone:/^05\d{8}$/.test(a.phone)?a.phone:'',chat:a.chat!==false,call:a.call!==false,specs:sp};
   if(DEAL[cid]) o.deal=DEAL[cid].indexOf(a.deal)>-1?a.deal:DEAL[cid][0];
   if(COND.indexOf(cid)>-1) o.cond=condList(cid).indexOf(a.cond)>-1?a.cond:'used';
@@ -1779,15 +1503,17 @@ const fixBucket=b=>({favs:(Array.isArray(b.favs)?b.favs:[]).map(Number).filter(i
 /* يبني الحالة من نص محفوظ؛ يُستخدم عند الفتح وعند تغيّر التخزين من تبويب آخر */
 function hydrate(d){
   const u=d.user&&typeof d.user==='object'&&str(d.user.name).trim()?{name:str(d.user.name,30).trim(),phone:/^05\d{8}$/.test(d.user.phone)?d.user.phone:'',email:str(d.user.email,60).toLowerCase(),via:str(d.user.via,20)}:null;
+  if(u&&/^[a-z0-9]{6,40}$/.test(d.user.sid||'')) u.sid=d.user.sid;   /* معرّف الجهاز للدخول الاجتماعي يبقى بعد التحديث */
+  if(u&&d.user.biz&&typeof d.user.biz==='object'&&str(d.user.biz.name).trim()&&/^\d{10}$/.test(d.user.biz.cr||'')) u.biz={name:str(d.user.biz.name,30).trim(),cr:d.user.biz.cr,type:BTYPES.indexOf(d.user.biz.type)>-1?d.user.biz.type:'أخرى'};
   S.user=u; const me=uid()||'', seen={}, had={}; ADS.forEach(a=>{ if(a.seller==='me') had[a.id]=a.photos; });
-  ADS=(Array.isArray(d.mine)?d.mine:[]).map(a=>{try{return fixAd(a,me,u?u.name:'',seen);}catch(e){return null;}}).filter(Boolean).concat(SAMPLE_ADS);
+  ADS=(Array.isArray(d.mine)?d.mine:[]).map(a=>{try{return fixAd(a,me,u?(u.biz?u.biz.name:u.name):'',seen);}catch(e){return null;}}).filter(Boolean).concat(SAMPLE_ADS);
   PER=Object.create(null);
   if(d.per&&typeof d.per==='object') Object.keys(d.per).slice(0,50).forEach(k=>{ const b=d.per[k]; if(b&&typeof b==='object') PER[str(k,90)]=fixBucket(b); });
   ADS.forEach(a=>{ if(a.seller==='me'&&a.pdb&&had[a.id]) a.photos=had[a.id]; });
-  adopt(); fillPhotos();
+  adopt(); fillPhotos(); API.touch();   /* بيانات جديدة من التخزين أو تبويب آخر: أبطل القراءات المحفوظة */
 }
 function load(){
-  let d=null; DEAD_KEYS.forEach(k=>{ try{localStorage.removeItem(k);}catch(e){} });   /* بيانات النسخ السابقة لا تُرحَّل */
+  let d; DEAD_KEYS.forEach(k=>{ try{localStorage.removeItem(k);}catch(e){} });   /* بيانات النسخ السابقة لا تُرحَّل */
   try{ d=JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){ d=null; }
   if(!d||typeof d!=='object') return;
   try{ hydrate(d); S.wiz=draftLoad(); if(S.user) S.screen='home'; }catch(e){}
@@ -1845,7 +1571,7 @@ function localize(root){ if(LANG!=='en'||!root) return;
     const c=p&&p.closest&&p.closest('[data-ctx]'), m=c&&EN_CTX[c.dataset.ctx], k=x.nodeValue.trim(), v=m&&m[k]?m[k]:toEn(x.nodeValue); if(v!==x.nodeValue) x.nodeValue=v; });
   [].forEach.call(root.querySelectorAll('[placeholder],[aria-label],[alt],[title]'),el=>{ ['placeholder','aria-label','alt','title'].forEach(a=>{ const v=el.getAttribute(a); if(v&&AR_RE.test(v)&&!el.closest('[data-noi18n]')) el.setAttribute(a,toEn(v)); }); }); }
 function applyLang(){ const en=LANG==='en', d=document.documentElement; d.lang=en?'en':'ar'; d.dir=en?'ltr':'rtl';
-  const a=$('#css-rtl'), b=$('#css-ltr'); if(a&&b){ a.media=en?'not all':'all'; b.media=en?'all':'not all'; }
+  const a=$('#css-base'), b=$('#css-ltr'); if(a&&b){ a.media='all'; b.media=en?'all':'not all'; }
   document.title=en?'Haraj AlUla':'حراج العلا'; nav.setAttribute('aria-label',en?'Main navigation':'التنقل الرئيسي'); }
 function setLang(l){ LANG=l==='en'?'en':'ar'; try{localStorage.setItem('haraj-alula-lang',LANG);}catch(e){} applyLang(); render(); }
 const langBtn=c=>`<button class="lang ${c||''}" data-act="lang" data-noi18n lang="${LANG==='en'?'ar':'en'}" aria-label="${LANG==='en'?'التحويل إلى العربية':'Switch to English'}">${LANG==='en'?'العربية':'English'}</button>`;
@@ -1854,7 +1580,9 @@ let tt; function toast(m){const t=$('#toast');m=tr(m);t.textContent=m;t.classLis
 /* ---------- pieces ---------- */
 const artTone=c=>{ let h=0; for(const ch of String(c)) h=(h*31+ch.charCodeAt(0))%997; return h%6; };   /* لون خلفية ثابت لكل قسم في الصور التوضيحية */
 const photo=(a,i)=>`<div class="photo">${a.photos&&a.photos[i||0]?`<img src="${esc(a.photos[i||0])}" alt="${esc(a.title)}"${i===0?'':' loading="lazy"'} decoding="async"${a.seller==='me'?' data-noi18n':''}>`:`<div class="slot art t${artTone(a.cat)}"><svg class="cimg" viewBox="0 0 48 48" aria-hidden="true">${CAT_SVG[a.cat]||CAT_SVG.other}</svg><span>صورة توضيحية</span></div>`}</div>`;
-const favBtn=a=>`<button class="fav" data-act="fav" data-id="${a.id}" aria-pressed="${S.favs.has(a.id)}" aria-label="أضف إلى المفضلة">${ic('heart')}</button>`;
+/* حالة القلب من مصدر واحد: معرّفات المفضلة عبر طبقة API */
+const isFav=id=>(readData('listFavoriteIds',[],'favids').data||[]).indexOf(+id)>-1;
+const favBtn=a=>`<button class="fav" data-act="fav" data-id="${a.id}" aria-pressed="${isFav(a.id)}" aria-label="أضف إلى المفضلة">${ic('heart')}</button>`;
 function card(a,row){
   return `<article class="card${row?' row':''}" data-act="open" data-id="${a.id}">
     <div class="ph">${photo(a)}${row?'':favBtn(a)}${a.sold?'<span class="badge sold">تم البيع</span>':a.featured&&!row?'<span class="badge">مميز</span>':''}</div>
@@ -1868,7 +1596,28 @@ const catGrid=(sel,limit)=>`<div class="cats">${(limit?CATS.slice(0,limit):sel==
 const head=(t,more)=>`<div class="sec-head"><h2>${t}</h2>${more?`<button data-act="all">عرض الكل ${ic('chevron-left')}</button>`:''}</div>`;
 const topbar=(title,noBack,attr)=>`<header class="topbar">${noBack?'':`<button class="round-btn" data-act="back" aria-label="رجوع">${ic('chevron-right')}</button>`}<h1${attr||''}>${title}</h1>${noBack?'':'<span class="ghost"></span>'}</header>`;
 const logo=`<div class="logo">${MARK}<div><b>حراج العلا</b></div></div>`;
+/* بائع لم تصل بياناته بعد (محوّل غير فوري): عرض محايد بلا توثيق */
+const NO_SELLER={user:false,name:'…',rating:null,reviews:0,joined:'',verified:false,biz:false};
 const empty=(t,s,btn)=>`<div class="empty"><b>${t}</b>${s}${btn||''}</div>`;
+
+/* ---------- القراءة عبر طبقة API ----------
+   المحوّل المحلي يوفّر قراءة فورية (DATA.now) فتبقى الواجهة كما هي بلا مرحلة تحميل.
+   محوّل غير فوري (خادم لاحقًا) يمر بمسار التحميل والخطأ: تُحفظ النتيجة في RQ وتُعاد القراءة
+   فقط عند تغيّر رقم المراجعة DATA.rev، ويُعاد الرسم عند وصولها. */
+let DATA=API;
+const RQ=new Map();
+function readData(fn,args,key){
+  if(DATA.now&&DATA.now[fn]){ const r=DATA.now[fn].apply(null,args); return r.ok?{st:'ok',data:r.data}:{st:'error',error:r.error}; }
+  const k=fn+'|'+key, e=RQ.get(k), rev=DATA.rev;
+  if(e&&(e.st==='loading'||e.rev===rev)) return e;
+  const n={st:'loading',data:e?e.data:undefined,rev}; RQ.set(k,n);
+  Promise.resolve().then(()=>DATA[fn].apply(null,args)).then(r=>{ RQ.set(k,r&&r.ok?{st:'ok',data:r.data,rev}:{st:'error',error:(r&&r.error)||{code:'unknown'},data:n.data,rev}); },
+    ()=>{ RQ.set(k,{st:'error',error:{code:'network'},data:n.data,rev}); }).then(()=>render());
+  return n;
+}
+/* حالتا التحميل والخطأ بأسلوب صندوق «لا توجد نتائج» الحالي */
+const loadingBox=()=>'<div class="empty" role="status" aria-busy="true"><b>جارٍ التحميل…</b></div>';
+const errorBox=()=>empty('تعذّر تحميل البيانات','تحقق من الاتصال ثم أعد المحاولة.','<button class="btn btn-light" data-act="retry">إعادة المحاولة</button>');
 const ini=t=>Array.from(String(t||'').trim())[0]||'';
 const stars=n=>{let h='';for(let i=1;i<=5;i++)h+=ic('star',i<=n?'on':'off');return `<span class="stars" role="img" aria-label="${n} من 5">${h}</span>`;};
 const opts=(list,val,first)=>(first?`<option value="">${esc(first)}</option>`:'')+list.map(o=>`<option value="${esc(o)}"${val===o?' selected':''}>${esc(o)}</option>`).join('');
@@ -1876,11 +1625,11 @@ const opts=(list,val,first)=>(first?`<option value="">${esc(first)}</option>`:''
 /* ---------- screens ---------- */
 const V={};
 V.splash=()=>{
-  const L=live(), latest=L.slice().sort((x,y)=>age(x)-age(y)).slice(0,6);
+  const pq=readData('listPublic',[],'public'), L=pq.data||[], latest=L.slice().sort((x,y)=>age(x)-age(y)).slice(0,6);   /* عبر طبقة API */
   return `<section class="splash"><div class="splash-in">
   <div class="sp-main">${langBtn('on-splash')}${MARK}<h1>حراج العلا</h1><p class="tag">بيع واشترِ من أهل العلا مباشرة</p>
     <form class="search" data-form="search" role="search">${ic('search')}<input name="q" type="search" placeholder="عمّ تبحث؟ سيارة، شقة، جوال..." aria-label="ابحث في حراج العلا"><button aria-label="بحث">${ic('send')}</button></form>
-    <p class="sp-stats"><span><b>${L.length}</b>${adsLabel(L.length)}</span><span><b>${BROWSE.length}</b>قسمًا</span><span><b>${PLACES.length}</b>مناطق</span></p>
+    <p class="sp-stats"><span><b>${pq.data?L.length:'…'}</b>${adsLabel(L.length)}</span><span><b>${BROWSE.length}</b>قسمًا</span><span><b>${PLACES.length}</b>مناطق</span></p>
     <div class="sp-cta"><button class="btn btn-gold" data-act="start">تصفح الإعلانات</button>
       <button class="btn btn-ghost" data-act="nav" data-id="add">${ic('plus')}أضف إعلانك</button></div>
     <p class="sp-note">التصفح متاح بدون تسجيل.</p>
@@ -1898,21 +1647,26 @@ const A_ICON='<svg class="ic" viewBox="0 0 24 24" fill="currentColor" aria-hidde
 V.login=()=>{const l=S.login,em=l.method==='email';
   return `${topbar('تسجيل الدخول')}
   <div class="form">${l.step===0?`<h2>سجّل دخولك</h2><p class="hint">نرسل لك رمز تحقق من 4 أرقام ${em?'إلى بريدك':'إلى جوالك'}.</p>
+    <div class="seg" role="group" aria-label="نوع الحساب"><button data-act="login-kind" data-id="person" aria-pressed="${l.kind!=='biz'}">${ic('user')}فرد</button><button data-act="login-kind" data-id="biz" aria-pressed="${l.kind==='biz'}">${ic('shopping-bag')}منشأة</button></div>
     <div class="seg" role="group" aria-label="طريقة الدخول"><button data-act="login-method" data-id="phone" aria-pressed="${!em}">${ic('smartphone')}رقم الجوال</button><button data-act="login-method" data-id="email" aria-pressed="${em}">${ic('mail')}البريد الإلكتروني</button></div>
-    <label class="field"><span>الاسم</span><input data-lin="name" maxlength="30" autocomplete="name" value="${esc(l.name)}" placeholder="الاسم الذي يظهر للمشترين"></label>
+    ${l.kind==='biz'?`<p class="hint">للمعارض ومكاتب العقار والمزارع ومزودي الخدمات: صفحة متجر وشارة «منشأة موثقة».</p>
+    <label class="field"><span>اسم المنشأة</span><input data-lin="biz" maxlength="30" autocomplete="organization" value="${esc(l.biz)}" placeholder="مثل: معرض الحجر للسيارات"></label>
+    <div class="frow"><label class="field"><span>رقم السجل التجاري</span><input data-lin="cr" data-num inputmode="numeric" dir="ltr" class="ltr-in" maxlength="10" value="${esc(l.cr)}" placeholder="0000000000"></label>
+    <label class="field"><span>النشاط</span><select data-lin="btype"><option value="">اختر النشاط</option>${opts(BTYPES,l.btype)}</select></label></div>`:''}
+    <label class="field"><span>${l.kind==='biz'?'اسم المسؤول':'الاسم'}</span><input data-lin="name" maxlength="30" autocomplete="name" value="${esc(l.name)}" placeholder="${l.kind==='biz'?'اسم الشخص المسؤول عن الحساب':'الاسم الذي يظهر للمشترين'}"></label>
     ${em?`<label class="field"><span>البريد الإلكتروني</span><input data-lin="email" type="email" inputmode="email" dir="ltr" class="ltr-in" maxlength="60" autocomplete="email" autocapitalize="off" value="${esc(l.email)}" placeholder="name@example.com"></label>`
         :`<label class="field"><span>رقم الجوال</span><input data-lin="phone" data-num type="tel" inputmode="tel" dir="ltr" class="ltr-in" maxlength="16" autocomplete="tel" value="${esc(l.phone)}" placeholder="05XXXXXXXX"></label>`}`
    :`<h2>أدخل رمز التحقق</h2><p class="hint">نموذج تجريبي: لا يُرسل رمز فعلي إلى <span dir="ltr">${esc(em?l.email:l.phone)}</span>. اكتب أي 4 أرقام.</p>
     <label class="field"><span>رمز التحقق</span><input class="otp" data-lin="code" data-num inputmode="numeric" dir="ltr" maxlength="4" autocomplete="one-time-code" value="${esc(l.code)}" placeholder="0000"></label>`}
    ${l.err?`<p class="err" id="form-err" role="alert">${l.err}</p>`:''}</div>
   <div class="wiz-nav">${l.step===1?`<button class="btn btn-ghost back" data-act="login-prev">${em?'تغيير البريد':'تغيير الرقم'}</button>`:''}<button class="btn btn-gold" data-act="login-next">${l.step===0?'أرسل رمز التحقق':'دخول'}</button></div>
-  ${l.step===0?`<div class="or"><span>أو</span></div>
+  ${l.step===0&&l.kind!=='biz'?`<div class="or"><span>أو</span></div>
   <div class="social"><button class="btn btn-google" data-act="login-social" data-id="Google">${G_ICON}المتابعة باستخدام Google</button>
     <button class="btn btn-apple" data-act="login-social" data-id="Apple">${A_ICON}المتابعة باستخدام Apple</button></div>`:''}
   <div class="bottom-space"></div>`;};
 
 V.home=()=>{
-  const L=live(), by=f=>L.filter(f);
+  const pq=readData('listPublic',[],'public'), L=pq.data||[], by=f=>L.filter(f);   /* عبر طبقة API */
   const latest=L.slice().sort((a,b)=>age(a)-age(b)).slice(0,10);
   const near=by(a=>a.loc==='العلا'&&!a.featured).slice(0,5);
   const rec=by(a=>['cars','electronics'].indexOf(a.cat)>-1).slice(-5);
@@ -1924,10 +1678,10 @@ V.home=()=>{
   <form class="search" data-form="search" role="search">${ic('search')}<input name="q" type="search" placeholder="ابحث في حراج العلا" aria-label="ابحث في حراج العلا"></form>
   <div class="hero"><div class="hero-text"><h2 aria-level="1">بيع واشترِ في العلا</h2><p>كل احتياجاتك في مكان واحد</p><button class="hero-cta" data-act="nav" data-id="add">${ic('plus')}أضف إعلانك</button></div></div>
   ${head('الأقسام')}${catGrid(undefined,11)}
-  ${head('الإعلانات المميزة')}<div class="hscroll">${by(a=>a.featured).map(a=>card(a)).join('')}</div>
+  ${!pq.data?(pq.st==='loading'?loadingBox():errorBox()):`${head('الإعلانات المميزة')}<div class="hscroll">${by(a=>a.featured).map(a=>card(a)).join('')}</div>
   ${head('أحدث الإعلانات',true)}<div class="grid2">${latest.map(a=>card(a)).join('')}</div>
   ${head('إعلانات قريبة منك')}<div class="hscroll">${near.map(a=>card(a)).join('')}</div>
-  ${head('مقترحة لك')}<div class="grid2">${rec.map(a=>card(a)).join('')}</div>
+  ${head('مقترحة لك')}<div class="grid2">${rec.map(a=>card(a)).join('')}</div>`}
   <div class="bottom-space"></div>`;
 };
 
@@ -1937,7 +1691,7 @@ V.cats=()=>`${topbar('الأقسام',true)}${catGrid()}
    <div role="group" class="chips">${c.subs.map(s=>`<button class="chip" data-act="sub-go" data-id="${c.id}" data-sub="${s}">${s}</button>`).join('')}</div>`).join('')}
   <div class="bottom-space"></div>`;
 
-const fCount=()=>{const f=S.f;return (f.min||f.max?1:0)+(f.y1||f.y2?1:0)+(f.cond?1:0)+(f.deal?1:0)+(f.vtype?1:0)+(f.brand?1:0)+(f.model?1:0);};
+const fCount=()=>{const f=S.f;return (f.min||f.max?1:0)+(f.y1||f.y2?1:0)+(f.cond?1:0)+(f.deal?1:0);};
 function results(){
   const big=1e12, p=(a,d)=>a.price==null?d:a.price, f=S.f;
   let r=live().filter(a=>(S.cat==='rent'?a.deal==='للإيجار'&&(!S.sub||a.cat===S.sub):(!S.cat||a.cat===S.cat)&&(!S.sub||a.sub===S.sub))&&(!S.loc||a.loc===S.loc)&&(!S.q||matchQ(a,S.q))
@@ -1950,7 +1704,8 @@ function results(){
 }
 V.list=()=>{
   const sg=JSON.stringify([S.cat,S.sub,S.q,S.loc,S.sort,S.f]); if(S.limSig!==sg){ S.limSig=sg; S.lim=PAGE; }
-  const c=S.cat&&cat(S.cat), r=results(), f=S.f, n=fCount(), isCar=S.cat==='cars', yr=!S.cat||isCar||S.cat==='equipment', deals=S.cat?DEAL[S.cat]:ALL_DEALS, conds=!S.cat||COND.indexOf(S.cat)>-1?condList(S.cat):null;
+  const q=readData('listListings',[{cat:S.cat,sub:S.sub,q:S.q,loc:S.loc,sort:S.sort,filters:S.f}],sg), r=q.data?q.data.items:[];   /* القائمة عبر طبقة API */
+  const c=S.cat&&cat(S.cat), f=S.f, n=fCount(), isCar=S.cat==='cars', yr=!S.cat||isCar||S.cat==='equipment', deals=S.cat?DEAL[S.cat]:ALL_DEALS, conds=!S.cat||COND.indexOf(S.cat)>-1?condList(S.cat):null;
   return `${topbar(c?c.name:(S.q?'نتائج البحث':'كل الإعلانات'))}
   <form class="search" data-form="search" role="search" style="margin-top:0">${ic('search')}<input name="q" type="search" value="${esc(S.q)}" placeholder="ابحث في ${c?c.name:'حراج العلا'}" aria-label="بحث"></form>
   <div class="filters">
@@ -1962,9 +1717,6 @@ V.list=()=>{
   ${S.fOpen?`<form class="form fpanel" data-form="filter"><h2>فلترة النتائج</h2>
     <div class="frow"><label class="field"><span>السعر من</span><input name="min" inputmode="numeric" value="${esc(f.min)}" placeholder="0"></label><label class="field"><span>إلى</span><input name="max" inputmode="numeric" value="${esc(f.max)}" placeholder="بدون حد"></label></div>
     ${yr?`<div class="frow"><label class="field"><span>سنة الصنع من</span><select name="y1">${opts(YEARS,f.y1,'الكل')}</select></label><label class="field"><span>إلى</span><select name="y2">${opts(YEARS,f.y2,'الكل')}</select></label></div>`:''}
-    ${isCar?`<label class="field"><span>نوع المركبة</span><select name="vtype" data-change="f-type">${opts(VTYPES,f.vtype,'كل الأنواع')}</select></label>
-      <div class="frow"><label class="field"><span>الماركة</span><select name="brand" data-change="f-brand">${opts(brandsOf(f.vtype),f.brand,'كل الماركات')}</select></label>
-      <label class="field"><span>الموديل</span><select name="model" data-ctx="${esc(f.brand)}"${f.brand?'':' disabled'}>${f.brand?opts(carModels(f.brand,f.vtype),f.model,'كل الموديلات'):'<option value="">اختر الماركة أولًا</option>'}</select></label></div>`:''}
     ${deals||conds?`<div class="frow">${deals?`<label class="field"><span>نوع الإعلان</span><select name="deal">${opts(deals,f.deal,'الكل')}</select></label>`:''}
       ${conds?`<label class="field"><span>الحالة</span><select name="cond"><option value="">الكل</option>${conds.map(k=>`<option value="${k}"${f.cond===k?' selected':''}>${CONDS[k]}</option>`).join('')}</select></label>`:''}</div>`:''}
     <div class="frow fbtns"><button type="button" class="btn btn-light" data-act="f-clear">مسح الفلاتر</button><button class="btn btn-gold">عرض النتائج</button></div></form>`:''}
@@ -1973,21 +1725,22 @@ V.list=()=>{
     ${f.brand?`<div role="group" class="chips" data-ctx="${esc(f.brand)}" aria-label="الموديل"><button class="chip" data-act="model" data-v="" aria-pressed="${!f.model}">كل الموديلات</button>${carModels(f.brand,f.vtype).map(m=>`<button class="chip" data-act="model" data-v="${esc(m)}" aria-pressed="${f.model===m}">${esc(m)}</button>`).join('')}</div>`:''}`
    :S.cat==='rent'?`<div role="group" class="chips" aria-label="القسم"><button class="chip" data-act="sub" data-sub="" aria-pressed="${!S.sub}">الكل</button>${RENT_CATS.map(k=>`<button class="chip" data-act="sub" data-sub="${k}" aria-pressed="${S.sub===k}">${cat(k).name}</button>`).join('')}</div>`
    :c&&c.subs.length?`<div role="group" class="chips"><button class="chip" data-act="sub" data-sub="" aria-pressed="${!S.sub}">الكل</button>${c.subs.map(s=>`<button class="chip" data-act="sub" data-sub="${s}" aria-pressed="${S.sub===s}">${s}</button>`).join('')}</div>`:'<div style="height:.9rem"></div>'}
-  <p class="count" role="status">${plural(r.length,ADSW)}</p>
-  ${r.length?`<div class="list">${r.slice(0,S.lim).map(a=>card(a,true)).join('')}</div>${r.length>S.lim?`<button class="btn btn-light more" data-act="more">عرض المزيد (${r.length-S.lim})</button>`:''}`:empty('لا توجد إعلانات مطابقة','غيّر الفلاتر أو النوع أو الموقع، أو أضف أول إعلان في هذا القسم.')}
+  <p class="count" role="status">${q.data?plural(r.length,ADSW):''}</p>
+  ${!q.data?(q.st==='loading'?loadingBox():errorBox()):r.length?`<div class="list">${r.slice(0,S.lim).map(a=>card(a,true)).join('')}</div>${r.length>S.lim?`<button class="btn btn-light more" data-act="more">عرض المزيد (${r.length-S.lim})</button>`:''}`:empty('لا توجد إعلانات مطابقة','غيّر الفلاتر أو النوع أو الموقع، أو أضف أول إعلان في هذا القسم.')}
   <div class="bottom-space"></div>`;
 };
 
 V.detail=()=>{
-  const a=ad(S.adId); if(!a) return topbar('الإعلان')+empty('هذا الإعلان غير متاح','ربما حُذف أو انتهى.');
-  const s=sellerInfo(a.seller,a.owner), n=a.photos&&a.photos.length?a.photos.length:1;
-  const others=live().filter(x=>x.seller===a.seller&&x.id!==a.id&&(a.seller!=='me'||x.owner===a.owner)).slice(0,5);
+  const q=readData('getListing',[S.adId],S.adId), a=q.data;   /* التفاصيل عبر طبقة API */
+  if(!a) return topbar('الإعلان')+(q.st==='loading'?loadingBox():q.error&&q.error.code!=='not_found'?errorBox():empty('هذا الإعلان غير متاح','ربما حُذف أو انتهى.'));
+  const sk=a.seller+'|'+(a.owner||''), s=readData('getSeller',[a.seller,a.owner],sk).data||NO_SELLER, n=a.photos&&a.photos.length?a.photos.length:1;   /* البائع وإعلاناته عبر طبقة API */
+  const others=(readData('listSellerListings',[a.seller,a.owner],sk).data||[]).filter(x=>x.id!==a.id).slice(0,5);
   const tail=a.cat==='cars'?a.brand:a.sub, specs=Object.assign({'القسم':cat(a.cat).name+(tail?' / '+tail:'')},a.specs); if(a.cat==='cars'&&a.brand) delete specs['الماركة'];
   let slides=''; for(let i=0;i<n;i++) slides+=`<div class="slide">${photo(a,i)}</div>`;
   return `<div class="detail-cols"><div class="d-media"><div class="gallery"><div class="track" id="track"${n>1?' tabindex="0" role="group" aria-label="صور الإعلان"':''}>${slides}</div>
     <div class="bar"><button class="round-btn" data-act="back" aria-label="رجوع">${ic('chevron-right')}</button><span class="sp"></span>
       <button class="round-btn" data-act="share" aria-label="مشاركة">${ic('share-2')}</button>
-      <button class="round-btn" data-act="fav" data-id="${a.id}" aria-pressed="${S.favs.has(a.id)}" aria-label="مفضلة">${ic('heart')}</button>
+      <button class="round-btn" data-act="fav" data-id="${a.id}" aria-pressed="${isFav(a.id)}" aria-label="مفضلة">${ic('heart')}</button>
       <button class="round-btn" data-act="report" aria-label="إبلاغ">${ic('flag')}</button></div>
     ${n>1?`<span class="counter" id="counter">1 / ${n}</span>`:''}</div></div>
   <div class="d-info"><div class="sheet">${a.sold?'<span class="chip-s off">تم البيع</span>':''}<h1${um(a)}>${esc(a.title)}</h1><div class="price">${money(a)}</div>
@@ -1995,16 +1748,18 @@ V.detail=()=>{
   <section class="block"><h2>الوصف</h2><p${um(a)}>${esc(a.desc)}</p></section>
   <section class="block"><h2>المواصفات</h2><dl class="specs" data-ctx="${esc(a.brand||'')}">${Object.keys(specs).map(k=>`<div><dt>${esc(k)}</dt><dd${a.seller==='me'&&typed(a,k)?U:''}>${esc(specs[k])}</dd></div>`).join('')}</dl></section>
   <section class="block"><h2>البائع</h2><button class="seller" data-act="seller" data-id="${esc(a.seller)}" data-owner="${esc(a.owner||'')}"><span class="avatar">${esc(ini(s.user?s.name:tr(s.name)))}</span><span class="grow">
-    <b${s.user?U:''}>${esc(s.name)}${s.verified?ic('badge-check'):''}</b>
+    <b${s.user?U:''}>${esc(s.name)}${s.verified?ic('badge-check'):''}</b>${s.biz?'<span class="biz-tag">منشأة موثقة</span>':''}
     <small><span class="star">${ic('star')}${s.rating?s.rating+' ('+s.reviews+' تقييم)':'بلا تقييمات بعد'}</span><span>${ic('calendar')}عضو منذ ${s.joined}</span></small></span>${ic('chevron-left')}</button></section></div></div>
   ${others.length?`${head('إعلانات البائع الأخرى')}<div class="hscroll">${others.map(x=>card(x)).join('')}</div>`:''}
   <div class="bottom-space"></div>`;
 };
 
 V.seller=()=>{
-  const id=S.sellerId,own=S.sellerOwner,s=sellerInfo(id,own),ads=live().filter(a=>a.seller===id&&(id!=='me'||a.owner===own)),rv=REVIEWS[id]||[];
+  const id=S.sellerId,own=S.sellerOwner,sk=id+'|'+(own||''),sq=readData('getSeller',[id,own],sk),lq=readData('listSellerListings',[id,own],sk),rv=REVIEWS[id]||[];   /* عبر طبقة API */
+  if(!sq.data||!lq.data) return topbar('صفحة البائع')+(sq.st==='loading'||lq.st==='loading'?loadingBox():errorBox());
+  const s=sq.data, ads=lq.data;
   return `${topbar('صفحة البائع')}
-  <div class="me"><span class="avatar">${esc(ini(s.user?s.name:tr(s.name)))}</span><div><b${s.user?U:''}>${esc(s.name)}</b><small>عضو منذ ${s.joined}${s.verified?'، رقم جوال موثّق':''}</small></div></div>
+  <div class="me"><span class="avatar">${esc(ini(s.user?s.name:tr(s.name)))}</span><div><b${s.user?U:''}>${esc(s.name)}</b><small>${s.biz?`<span>منشأة</span>${typeof s.biz==='string'?' · <span>'+esc(s.biz)+'</span>':''} · <span>سجل تجاري موثّق (تجريبي)</span>`:`عضو منذ ${s.joined}${s.verified?'، رقم جوال موثّق':''}`}</small></div></div>
   <div class="stats"><div><b>${ads.length}</b><span>${adsLabel(ads.length)}</span></div><div><b>${s.rating||'-'}</b><span>التقييم</span></div><div><b>${s.reviews}</b><span>عدد التقييمات</span></div></div>
   ${head('أحدث التقييمات')}
   ${rv.length?rv.map(r=>`<section class="block review">${stars(r.stars)}<p>${esc(r.t)}</p><small>${esc(r.by)}</small></section>`).join(''):empty('لا توجد تقييمات بعد','تظهر التقييمات هنا بعد أول عملية بيع.')}
@@ -2013,10 +1768,13 @@ V.seller=()=>{
   <div class="bottom-space"></div>`;
 };
 
-V.favs=()=>{const r=ADS.filter(a=>S.favs.has(a.id));
+V.favs=()=>{const q=readData('listFavorites',[],'favs'), r=q.data||[];   /* المفضلة عبر طبقة API */
+  if(!q.data) return topbar('المفضلة')+(q.st==='loading'?loadingBox():errorBox());
   return `${topbar('المفضلة')}${r.length?`<div class="grid2">${r.map(a=>card(a)).join('')}</div>`:empty('لا توجد إعلانات في المفضلة','اضغط علامة القلب على أي إعلان ليُحفظ هنا.')}<div class="bottom-space"></div>`;};
 
-V.myads=()=>{const r=ADS.filter(isMine);
+const myAds=()=>readData('myListings',[],'me|'+(uid()||''));   /* إعلانات المستخدم عبر طبقة API */
+V.myads=()=>{const q=myAds(), r=q.data||[];
+  if(!q.data&&!(q.error&&q.error.code==='unauthenticated')) return topbar('إعلاناتي')+(q.st==='loading'?loadingBox():errorBox());
   return `${topbar('إعلاناتي')}${r.length?`<div class="list one">${r.map(a=>`<div class="card mine"><div class="mine-top" data-act="open" data-id="${a.id}" tabindex="0" role="link">
       <div class="ph">${photo(a)}</div><div class="card-body"><span class="chip-s${a.sold?' off':''}">${a.sold?'تم البيع':'نشط'}</span><h3${U}>${esc(a.title)}</h3><div class="price">${money(a)}</div></div></div>
     <div class="mine-acts"><button data-act="edit" data-id="${a.id}">${ic('pencil')}تعديل</button>
@@ -2087,7 +1845,7 @@ function validate(){
     case 3: return w.desc.trim().length<15?'اكتب وصفًا من 15 حرفًا على الأقل.':'';
     case 4: w.price=lat(w.price).replace(/[,٬\s]/g,''); if(w.price==='') return ''; if(!/^\d{1,9}$/.test(w.price)) return 'اكتب السعر بالأرقام فقط، حتى 9 خانات.';
       return +w.price===0?'اكتب سعرًا أكبر من صفر، أو اترك الخانة فارغة ليظهر «السعر عند التواصل».':'';
-    case 6: w.phone=normPhone(w.phone); if(!/^05\d{8}$/.test(w.phone)) return 'اكتب رقم جوال صحيحًا يبدأ بـ 05 ويتكون من 10 أرقام.'; return w.chat||w.call?'':'اختر وسيلة تواصل واحدة على الأقل.';
+    case 6: w.phone=normPhone(w.phone); if((w.call||w.phone)&&!/^05\d{8}$/.test(w.phone)) return 'اكتب رقم جوال صحيحًا يبدأ بـ 05 ويتكون من 10 أرقام.'; return w.chat||w.call?'':'اختر وسيلة تواصل واحدة على الأقل.';
   } return '';
 }
 function publish(){
@@ -2095,10 +1853,12 @@ function publish(){
   const data={cat:w.cat,sub:w.sub,title:w.title.trim(),price:w.price===''||NOPRICE.indexOf(w.cat)>-1?null:+w.price,loc:w.loc,desc:w.desc.trim(),specs:sp,photos:w.photos,
     cond:COND.indexOf(w.cat)>-1?w.cond:undefined,deal:DEAL[w.cat]?(w.deal||DEAL[w.cat][0]):undefined,vtype:w.cat==='cars'?sp['نوع المركبة']:undefined,brand:w.cat==='cars'?sp['الماركة']:undefined,model:w.cat==='cars'?sp['الموديل']:undefined,
     year:/^(19|20)\d{2}$/.test(sp['سنة الصنع']||'')?+sp['سنة الصنع']:undefined,nego:w.nego,phone:w.phone,chat:w.chat,call:w.call};
-  if(w.editId){ Object.assign(ad(w.editId),data); w.newId=w.editId; }
-  else{ const id=Date.now(); ADS.unshift(Object.assign({id:id,mins:1,created:id,views:0,seller:'me',owner:uid(),ownerName:S.user.name},data)); w.newId=id;
-    NOTIFS.unshift({id:id,u:true,icon:'megaphone',t:'نُشر إعلانك',s:data.title,time:'الآن',to:['detail',id],read:false}); }
-  const a=ad(w.newId); a.photos=w.photos.slice(); putPhotos(a,w); w.saveFail=!save();
+  /* الحفظ عبر طبقة API (إنشاء أو تعديل)، والإشعار وحالة المعالج هنا في الواجهة */
+  return (w.editId?API.updateListing(w.editId,data,{wiz:w}):API.createListing(data,{wiz:w})).then(r=>{
+    if(!r.ok) return false;
+    w.newId=r.data.id;
+    if(!w.editId) NOTIFS.unshift({id:w.newId,u:true,icon:'megaphone',t:'نُشر إعلانك',s:data.title,time:'الآن',to:['detail',w.newId],read:false});
+    w.saveFail=!save(); return true; });
 }
 function editAd(id){
   const a=ad(id); if(!isMine(a)) return; const w=fresh(),sp=Object.assign({},a.specs); delete sp['الحالة']; delete sp['السعر']; delete sp['نوع الإعلان'];
@@ -2115,13 +1875,13 @@ V.thread=()=>{const c=CHATS.find(x=>x.id===S.chatId); if(!c) return topbar('ال
   return `${topbar(esc(c.with),false,c.u?U:'')}${a?`<p class="about-ad">بخصوص: <b${um(a)}>${esc(a.title)}</b></p>`:''}
   <div class="thread">${c.msgs.length?c.msgs.map(m=>`<div class="msg ${m.me?'me':'them'}"${m.me?U:' dir="auto"'}>${esc(m.t)}</div>`).join(''):'<p class="count" style="text-align:center;padding-top:1rem">ابدأ المحادثة بسؤال عن المعروض.</p>'}</div>`;};
 
-V.account=()=>{const u=S.user,mine=ADS.filter(isMine).length;
-  const rows=[['megaphone','إعلاناتي',mine,'myads'],['heart','المفضلة',S.favs.size,'favs'],['star','تقييماتي','','my-reviews'],['bell','الإشعارات',NOTIFS.filter(n=>!n.read).length||'','notifs'],
+V.account=()=>{const u=S.user,mine=(myAds().data||[]).length,favN=(readData('listFavoriteIds',[],'favids').data||[]).length;
+  const rows=[['megaphone','إعلاناتي',mine,'myads'],['heart','المفضلة',favN,'favs'],['star','تقييماتي','','my-reviews'],['bell','الإشعارات',NOTIFS.filter(n=>!n.read).length||'','notifs'],
     ['languages','اللغة',LANG==='en'?'English':'العربية','lang'],['settings','الإعدادات','','demo'],['circle-help','المساعدة','','demo'],['trash-2',S.confirmReset?'اضغط مرة أخرى لتأكيد المسح':'مسح بيانات النموذج','','reset']].concat(u?[['log-out','تسجيل الخروج','','logout']]:[]);
   return `${topbar('حسابي',true)}
-  ${u?`<div class="me"><span class="avatar">${esc(ini(u.name))}</span><div><b${U}>${esc(u.name)}</b><small>${u.phone||u.email?`<span dir="ltr">${esc(u.phone||u.email)}</span>`:'دخول عبر '+esc(u.via)}</small></div></div>`
+  ${u?`<div class="me"><span class="avatar">${esc(ini(u.biz?u.biz.name:u.name))}</span><div><b${U}>${esc(u.biz?u.biz.name:u.name)}</b>${u.biz?`<small><span>منشأة</span> · <span>${esc(u.biz.type)}</span> · <span>السجل التجاري</span> <span dir="ltr">${esc(u.biz.cr)}</span> · <span>المسؤول</span>: <span${U}>${esc(u.name)}</span></small>`:''}<small>${u.phone||u.email?`<span dir="ltr">${esc(u.phone||u.email)}</span>`:'دخول عبر '+esc(u.via)}</small></div></div>`
      :`<div class="me guest"><div><b>أهلًا بك في حراج العلا</b><small>سجّل الدخول لتنشر إعلاناتك وتراسل البائعين.</small></div><button class="btn btn-gold" data-act="login">تسجيل الدخول</button></div>`}
-  <div class="stats"><div><b>${mine}</b><span>إعلاناتي</span></div><div><b>${S.favs.size}</b><span>المفضلة</span></div><div><b>${CHATS.length}</b><span>المحادثات</span></div></div>
+  <div class="stats"><div><b>${mine}</b><span>إعلاناتي</span></div><div><b>${favN}</b><span>المفضلة</span></div><div><b>${CHATS.length}</b><span>المحادثات</span></div></div>
   <div class="rowlist">${rows.map(r=>`<button data-act="${r[3]}"${r[3]==='reset'&&S.confirmReset?' class="danger"':''}>${ic(r[0],'lead')}<span class="grow"><b>${r[1]}</b></span><span class="end"${r[3]==='lang'?' data-noi18n':''}>${r[2]}</span>${ic('chevron-left')}</button>`).join('')}</div>
   <div class="bottom-space"></div>`;};
 
@@ -2130,7 +1890,7 @@ const NAV=[['home','الرئيسية','home'],['cats','الأقسام','layout-g
 const CUR={list:'cats',detail:'cats',seller:'cats',thread:'chats',favs:'account',myads:'account',notifs:'home',login:''};
 function footer(){
   const s=S.screen;
-  if(s==='detail'){const a=ad(S.adId); if(!a) return '';
+  if(s==='detail'){const a=readData('getListing',[S.adId],S.adId).data; if(!a) return '';
     return `<div class="foot-detail"><div class="foot-in actions">${isMine(a)?`<button class="btn btn-gold" data-act="edit" data-id="${a.id}">${ic('pencil')}تعديل الإعلان</button><button class="btn btn-ghost" data-act="myads">${ic('megaphone')}إعلاناتي</button>`
       :`${a.chat!==false?`<button class="btn btn-gold" data-act="msg">${ic('message-circle')}محادثة</button>`:''}${a.call!==false?`<button class="btn ${a.chat!==false?'btn-ghost':'btn-gold'}" data-act="wa">${ic('smartphone')}واتساب</button><button class="btn btn-ghost btn-sq" data-act="call" aria-label="اتصال">${ic('phone')}</button>`:''}`}</div></div>`;}
   if(s==='thread') return `<div class="foot-thread-wrap"><form class="foot-in foot-thread composer" data-form="send"><input name="t" placeholder="اكتب رسالتك" aria-label="اكتب رسالتك" autocomplete="off"><button aria-label="إرسال">${ic('send')}</button></form></div>`;
@@ -2149,12 +1909,12 @@ function fKey(el){ if(!el||!el.dataset||el===document.body) return null; if((el.
 function markInvalid(){ const er=view.querySelector('#form-err'); if(!er) return;
   const els=[].slice.call(view.querySelectorAll('input:not([type=file]):not([type=hidden]):not([type=checkbox]),textarea,select')), m=er.textContent; let bad=null;
   els.forEach(el=>{ el.setAttribute('aria-describedby','form-err'); el.removeAttribute('aria-invalid'); });
-  if(S.screen==='login'){ const k=/اسم/.test(m)?'name':/بريد/.test(m)?'email':/جوال/.test(m)?'phone':'code'; bad=view.querySelector('[data-lin="'+k+'"]'); }
+  if(S.screen==='login'){ const k=/المنشأة\.$/.test(m)&&/اسم/.test(m)?'biz':/السجل/.test(m)?'cr':/نشاط/.test(m)?'btype':/اسم/.test(m)?'name':/بريد/.test(m)?'email':/جوال/.test(m)?'phone':'code'; bad=view.querySelector('[data-lin="'+k+'"]'); }
   else if(S.screen==='add') bad=S.wiz.step===0?els.filter(e=>e.tagName==='SELECT'&&!e.value&&!e.disabled)[0]:els[0];
   if(bad) bad.setAttribute('aria-invalid','true'); }
 const focusInvalid=()=>{ const b=view.querySelector('[aria-invalid="true"]'); if(b){ try{b.focus();}catch(x){} } };
 /* عنوان الصفحة يتبع الشاشة (WCAG 2.4.2) */
-function setTitle(){ const a=ad(S.adId), c=S.cat&&cat(S.cat);
+function setTitle(){ const a=S.screen==='detail'?readData('getListing',[S.adId],S.adId).data:null, c=S.cat&&cat(S.cat);
   const T={cats:'الأقسام',list:c?c.name:(S.q?'نتائج البحث':'كل الإعلانات'),detail:a?a.title:'الإعلان',seller:'البائع',favs:'المفضلة',myads:'إعلاناتي',notifs:'الإشعارات',chats:'المحادثات',thread:'المحادثة',account:'حسابي',add:'إضافة إعلان',login:'تسجيل الدخول'}[S.screen];
   const base=tr('حراج العلا'); document.title=T?(S.screen==='detail'&&a&&a.seller==='me'?T:tr(T))+' — '+base:base; }
 function render(){
@@ -2174,7 +1934,7 @@ function render(){
 function shrink(file,cb){
   const r=new FileReader();
   r.onload=()=>{const im=new Image();
-    im.onload=()=>{let out=null; try{const k=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');
+    im.onload=()=>{let out; try{const k=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');
       c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);out=c.toDataURL('image/jpeg',.75);}catch(e){ out=file.size<=400e3&&/^data:image\/(jpeg|png|webp|gif);base64,/.test(r.result)?r.result:null; } cb(out);};
     im.onerror=()=>cb(null); im.src=r.result;};
   r.onerror=()=>cb(null); r.readAsDataURL(file);
@@ -2184,7 +1944,7 @@ function shrink(file,cb){
 const DEMO='هذه الميزة غير مفعّلة في النموذج التجريبي.';
 function readFilter(form){ const el=form.elements, num=n=>el[n]?lat(el[n].value).replace(/[^\d]/g,''):'', val=n=>el[n]?el[n].value:'';
   let mn=num('min'),mx=num('max'),y1=val('y1'),y2=val('y2'); if(mn&&mx&&+mn>+mx){const x=mn;mn=mx;mx=x;} if(y1&&y2&&+y1>+y2){const x=y1;y1=y2;y2=x;}
-  S.f={min:mn,max:mx,y1:y1,y2:y2,cond:val('cond'),deal:val('deal'),vtype:val('vtype'),brand:val('brand'),model:val('brand')?val('model'):''}; }
+  S.f={min:mn,max:mx,y1:y1,y2:y2,cond:val('cond'),deal:val('deal'),vtype:S.f.vtype,brand:S.f.brand,model:S.f.model}; }
 const panelIn=()=>{const fp=$('form.fpanel'); if(fp) readFilter(fp);};
 const resetList=()=>{S.sub='';S.q='';S.loc='';S.sort='new';S.f=noFilter();S.fOpen=false;};
 document.addEventListener('click',e=>{
@@ -2195,12 +1955,16 @@ document.addEventListener('click',e=>{
     case 'login': S.after=null; S.login=newLogin(); go('login'); break;
     case 'login-prev': l.step=0;l.err='';l.code=''; render(); break;
     case 'login-method': l.method=id; l.err=''; render(); break;
+    case 'login-kind': l.kind=id==='biz'?'biz':'person'; l.err=''; render(); break;
     case 'login-social': finishLogin({name:'حساب '+id+' تجريبي',via:id,sid:devSid()},'دخول تجريبي: لا يوجد ربط فعلي بحساب '+id); break;
     case 'login-next':
-      if(l.step===0){ l.phone=normPhone(l.phone); l.err=l.name.trim().length<2?'اكتب اسمك.':l.method==='email'?(/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(l.email.trim())?'':'اكتب بريدًا إلكترونيًا صحيحًا.')
+      if(l.step===0){ l.phone=normPhone(l.phone); l.cr=lat(l.cr||'').replace(/\D/g,'');
+          l.err=l.kind==='biz'&&l.biz.trim().length<2?'اكتب اسم المنشأة.':l.kind==='biz'&&!/^\d{10}$/.test(l.cr)?'اكتب رقم السجل التجاري من 10 أرقام.':l.kind==='biz'&&BTYPES.indexOf(l.btype)<0?'اختر نشاط المنشأة.':l.name.trim().length<2?'اكتب اسمك.':l.method==='email'?(/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(l.email.trim())?'':'اكتب بريدًا إلكترونيًا صحيحًا.')
           :(/^05\d{8}$/.test(l.phone)?'':'اكتب رقم جوال صحيحًا يبدأ بـ 05 ويتكون من 10 أرقام.'); if(!l.err) l.step=1; render(); if(l.err) focusInvalid(); }
       else if(!/^\d{4}$/.test(l.code=lat(l.code).trim())){ l.err='اكتب رمزًا من 4 أرقام.'; render(); focusInvalid(); }
-      else finishLogin(l.method==='email'?{name:l.name.trim(),email:l.email.trim().toLowerCase(),via:'البريد'}:{name:l.name.trim(),phone:l.phone,via:'الجوال'},'تم تسجيل الدخول');
+      else { const u=l.method==='email'?{name:l.name.trim(),email:l.email.trim().toLowerCase(),via:'البريد'}:{name:l.name.trim(),phone:l.phone,via:'الجوال'};
+        if(l.kind==='biz') u.biz={name:l.biz.trim(),cr:l.cr,type:l.btype};
+        finishLogin(u,l.kind==='biz'?'تم تسجيل دخول المنشأة':'تم تسجيل الدخول'); }
       break;
     case 'logout': setUser(null); save(); go('splash',{root:true}); break;
     case 'reset': if(!S.confirmReset){ S.confirmReset=true; S.confirmAt=Date.now(); render(); toast('سيُحذف حسابك وإعلاناتك من هذا المتصفح. اضغط مرة أخرى للتأكيد.'); break; }
@@ -2223,7 +1987,8 @@ document.addEventListener('click',e=>{
     case 'myads': needLogin(()=>go('myads')); break;
     case 'my-reviews': needLogin(()=>{S.sellerId='me';S.sellerOwner=uid();go('seller');}); break;
     case 'seller': S.sellerId=id; S.sellerOwner=el.dataset.owner||''; go('seller'); break;
-    case 'more': { const k=S.lim; S.lim+=PAGE; render(); const l=view.querySelectorAll('.list a.card-link')[k]; if(l) try{ l.focus({preventScroll:true}); }catch(x){} } break;   /* التركيز على أول بطاقة جديدة */
+    case 'retry': RQ.clear(); render(); break;
+    case 'more': { const k=S.lim; S.lim+=PAGE; render(); const nx=view.querySelectorAll('.list a.card-link')[k]; if(nx) try{ nx.focus({preventScroll:true}); }catch(x){} } break;   /* التركيز على أول بطاقة جديدة */
     case 'cat': S.cat=id;resetList();go('list'); break;
     case 'sub-go': S.cat=id;resetList();S.sub=el.dataset.sub;go('list'); break;
     case 'all': S.cat=null;resetList();S.sort='new';go('list'); break;
@@ -2237,13 +2002,14 @@ document.addEventListener('click',e=>{
     case 'f-clear': S.f=noFilter(); S.fOpen=false; render(); break;
     case 'open': if(S.screen==='add') S.wiz=fresh(); S.adId=+id; go('detail',{replace:S.screen==='add'}); break;
     case 'edit': needLogin(()=>{ if(isMine(ad(id))) editAd(+id); else toast('لا يمكنك تعديل إعلان ليس لحسابك.'); }); break;
-    case 'sold': {const a=ad(id); if(!isMine(a)) break; a.sold=!a.sold; save(); render(); toast(a.sold?'عُلّم الإعلان كمباع وأُخفي من القوائم':'أُعيد تفعيل الإعلان'); break;}
+    case 'sold': {const a=ad(id); if(!isMine(a)) break;   /* فحص الواجهة للعرض فقط؛ الطبقة تتحقق من الملكية أيضًا */
+      API.setSold(a.id,!a.sold).then(r=>{ if(!r.ok) return; render(); toast(r.data.sold?'عُلّم الإعلان كمباع وأُخفي من القوائم':'أُعيد تفعيل الإعلان'); }); break;}
     case 'del': if(!isMine(ad(id))) break; if(S.confirmDel!==+id){S.confirmDel=+id;S.confirmAt=Date.now();render();break;}
       if(Date.now()-S.confirmAt<CONFIRM_MS) break;   /* نقرة مزدوجة عرضية لا تؤكد الحذف */
-      PDB.del('ad:'+(+id)); ADS=ADS.filter(a=>a.id!==+id); S.favs.delete(+id); NOTIFS=NOTIFS.filter(n=>!(n.to&&n.to[0]==='detail'&&n.to[1]===+id)); S.confirmDel=null; save(); render(); toast('حُذف الإعلان'); break;
-    case 'fav': {const n=+id; if(S.favs.has(n)) S.favs.delete(n); else S.favs.add(n); save();
-      if(S.screen==='favs'){render();} else [].forEach.call(document.querySelectorAll(`[data-act="fav"][data-id="${n}"]`),b=>b.setAttribute('aria-pressed',S.favs.has(n)));
-      toast(S.favs.has(n)?'أُضيف إلى المفضلة':'أُزيل من المفضلة'); break;}
+      S.confirmDel=null; API.removeListing(id).then(r=>{ render(); if(r.ok) toast('حُذف الإعلان'); }); break;   /* الحذف الفعلي في طبقة API */
+    case 'fav': API.toggleFavorite(id).then(r=>{ if(!r.ok) return; const n=r.data.id;   /* البيانات عبر طبقة API */
+      if(S.screen==='favs'){render();} else [].forEach.call(document.querySelectorAll(`[data-act="fav"][data-id="${n}"]`),b=>b.setAttribute('aria-pressed',r.data.favorite));
+      toast(r.data.favorite?'أُضيف إلى المفضلة':'أُزيل من المفضلة'); }); break;
     case 'share': {const a=ad(S.adId); if(!a) break; const d={title:a.title,text:a.title}; try{ if(window.top===window&&/^https?:$/.test(location.protocol)) d.url=location.href.split('#')[0]+'#ad='+a.id; }catch(x){}
       if(navigator.share) navigator.share(d).catch(()=>{}); else toast('المشاركة غير متاحة في هذا المتصفح.'); break;}
     case 'report': toast('البلاغات غير مفعّلة في النموذج التجريبي.'); break;
@@ -2259,7 +2025,12 @@ document.addEventListener('click',e=>{
     case 'wiz-prev': if(isWiz(S.stack[S.stack.length-1])){ back(); break; }
       w.err=''; w.step--; if(w.step===4&&NOPRICE.indexOf(w.cat)>-1) w.step=3; render(); view.scrollTop=0; focusHead('.form h2'); break;
     case 'wiz-next': if(w.busy){ toast('جارٍ معالجة الصور، لحظة…'); break; } w.err=validate();
-      if(!w.err){ const from=w.step; if(from===7){ publish(); wizPurge(); } else { S.stack.push({s:'add',wstep:from}); hPush(); }
+      if(!w.err&&w.step===7){ if(w.publishing) break; w.publishing=true;   /* منع النشر المكرر أثناء الحفظ */
+        publish().then(okd=>{ w.publishing=false;
+          if(!okd){ w.err='تعذّر حفظ الإعلان. حاول مرة أخرى.'; render(); focusInvalid(); return; }
+          wizPurge(); w.step++; render(); view.scrollTop=0; focusHead('.form h2'); });
+        break; }
+      if(!w.err){ const from=w.step; S.stack.push({s:'add',wstep:from}); hPush();
         w.step++; if(w.step===4&&NOPRICE.indexOf(w.cat)>-1) w.step=5; }
       render(); if(!w.err){ view.scrollTop=0; focusHead('.form h2'); } else focusInvalid(); break;
   }
@@ -2285,18 +2056,19 @@ document.addEventListener('input',e=>{
   else if(d.lin) S.login[d.lin]=v;
 });
 document.addEventListener('change',e=>{
+  if(e.target.dataset.lin&&e.target.tagName==='SELECT'){ S.login[e.target.dataset.lin]=e.target.value; return; }   /* قوائم الدخول: للمتصفحات التي لا تطلق input على select */
   const k=e.target.dataset.change; if(!k) return;
   if(k==='sort'||k==='loc'){ S[k]=e.target.value; render(); return; }
-  if(k==='f-type'||k==='f-brand'){ const fm=e.target.form.elements, tv=fm.vtype.value;   /* تحديث القوائم التابعة في مكانها دون تطبيق الفلتر */
-    if(k==='f-type'){ const bl=brandsOf(tv), keep=bl.indexOf(fm.brand.value)>-1?fm.brand.value:''; fm.brand.innerHTML=opts(bl,keep,'كل الماركات'); }
-    const bv=fm.brand.value, ml=bv?carModels(bv,tv):[], km=k==='f-type'&&ml.indexOf(fm.model.value)>-1?fm.model.value:'';
-    fm.model.disabled=!bv; fm.model.dataset.ctx=bv; fm.model.innerHTML=bv?opts(ml,km,'كل الموديلات'):'<option value="">اختر الماركة أولًا</option>'; localize(e.target.form); return; }
   if(k==='photos'){
-    const w=S.wiz, all=[].slice.call(e.target.files), room=10-w.photos.length-(w.pend||0), pick=all.slice(0,room), files=pick.filter(f=>f.type.indexOf('image/')===0&&f.size<=25e6);
-    let bad=pick.length-files.length, left=files.length; const res=new Array(files.length); w.pend=(w.pend||0)+files.length;
+    const w=S.wiz, all=[].slice.call(e.target.files), room=Math.max(0,10-w.photos.length-(w.pend||0));
+    if(!all.length) return;
+    const notImages=all.filter(f=>f.type.indexOf('image/')!==0).length;
+    const tooLarge=all.filter(f=>f.type.indexOf('image/')===0&&f.size>25e6).length;
+    const valid=all.filter(f=>f.type.indexOf('image/')===0&&f.size<=25e6), files=valid.slice(0,room), overflow=valid.length-files.length;
+    let failed=0, left=files.length; const res=new Array(files.length); w.pend=(w.pend||0)+files.length;
     if(left){ w.busy=true; if(S.screen==='add') render(); }
-    const done=()=>{ w.busy=false; w.pend=Math.max(0,(w.pend||0)-files.length); res.forEach(o=>{ if(o) w.photos.push(o); else bad++; }); w.err=''; if(S.screen==='add') render(); if(S.wiz===w) draftSave(true);
-      if(bad) toast('تعذّر فتح '+plural(bad,PHOTOW)+'. جرّب صيغة JPG أو PNG.'); else if(all.length>room) toast('الحد الأقصى 10 صور، وأُضيف ما يتسع.'); };
+    const done=()=>{ w.busy=false; w.pend=Math.max(0,(w.pend||0)-files.length); res.forEach(o=>{ if(o) w.photos.push(o); else failed++; }); w.err=''; if(S.screen==='add') render(); if(S.wiz===w) draftSave(true);
+      toast(`نتيجة الصور: أضيفت ${res.filter(Boolean).length}، ملفات غير صور ${notImages}، تجاوزت 25 MB ${tooLarge}، لم تتسع الخانات ${overflow}، تعذّر فتحها ${failed}`); };
     if(!left){ done(); return; }
     files.forEach((f,i)=>{ let fired=false; const cb=out=>{ if(fired) return; fired=true; res[i]=out; if(--left===0) done(); };
       try{ shrink(f,cb); }catch(x){ cb(null); } });   /* خطأ في قراءة ملف لا يُبقي المعالجة عالقة */   /* تُضاف بترتيب الاختيار لا ترتيب انتهاء المعالجة */
@@ -2326,5 +2098,3 @@ render();
 </script>
 </body>
 </html>
-
-</body></html>

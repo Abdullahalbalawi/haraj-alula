@@ -78,6 +78,12 @@ h1,h2,h3,p{margin:0}
 .sec-head h2{font-size:1.125rem;font-weight:700;text-shadow:0 1px 6px rgba(31,18,10,.7)}
 .sec-head button{font-size:.875rem;color:var(--gold);display:flex;align-items:center}
 .sec-head .ic{width:1rem;height:1rem;margin-right:.1rem}
+.carousel-wrap{position:relative}
+.carousel-arrow{position:absolute;top:50%;z-index:3;display:flex;width:2rem;height:2rem;min-height:40px;align-items:center;justify-content:center;padding:0;border:1px solid rgba(246,226,190,.55);border-radius:50%;background:rgba(40,24,12,.72);color:var(--on-dark);transform:translateY(-50%)}
+.carousel-arrow[data-dir="left"]{left:1.5rem}
+.carousel-arrow[data-dir="right"]{right:1.5rem}
+.carousel-arrow .ic{width:1.1rem;height:1.1rem;margin:0}
+@media (min-width:768px){.carousel-arrow{display:none!important}}
 
 /* ---------- logo ---------- */
 .logo{display:inline-flex;align-items:center;color:var(--gold);text-align:right}
@@ -87,10 +93,11 @@ h1,h2,h3,p{margin:0}
 /* ---------- splash ---------- */
 .splash{position:relative;min-height:100%;display:flex;background-color:#3a2210;
   background-image:radial-gradient(ellipse 95% 40% at 50% 12%,rgba(240,200,130,.40),rgba(240,200,130,0) 70%),linear-gradient(180deg,#7c4b23 0%,#56331a 36%,#2d1a0d 76%,#1f120a 100%)}
+.splash>.lang-picker{position:absolute;top:1.75rem;inset-inline-start:1.25rem;z-index:2}
 .has-pat .splash{background-image:var(--pat),radial-gradient(ellipse 95% 40% at 50% 12%,rgba(240,200,130,.40),rgba(240,200,130,0) 70%),linear-gradient(180deg,#7c4b23 0%,#56331a 36%,#2d1a0d 76%,#1f120a 100%)}
 .splash::before{content:"";position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(180deg,rgba(31,18,10,0) 50%,rgba(31,18,10,.55) 100%)}
 .splash-in{position:relative;width:100%;max-width:30rem;margin:0 auto;display:flex;flex-direction:column;padding-bottom:1.5rem}
-.sp-main{text-align:center;padding:2rem 1.4rem 0;color:var(--on-dark)}
+.sp-main{ text-align:center;padding:1rem 1.4rem 0;color:var(--on-dark)}
 .sp-main>svg{width:5.25rem;height:4.5rem;color:var(--gold)}
 .sp-main h1{font-size:3.25rem;font-weight:800;line-height:1.15;margin-top:.3rem;color:#f6dca6;-webkit-filter:drop-shadow(0 3px 10px rgba(31,18,10,.6));filter:drop-shadow(0 3px 10px rgba(31,18,10,.6))}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){.sp-main h1{background:linear-gradient(180deg,#fff6e2 10%,#f0cd8c 55%,#c9944a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}}
@@ -121,6 +128,7 @@ h1,h2,h3,p{margin:0}
 .perks div{flex:1;display:flex;flex-direction:column;align-items:center;font-size:.875rem;font-weight:500;text-align:center}
 .perks .ic{width:1.875rem;height:1.875rem;color:var(--gold);margin-bottom:.35rem}
 .splash-foot{text-align:center;color:var(--on-dark-muted);font-size:.875rem;margin-top:1rem}
+@media (max-width:899px){.splash>.lang-picker{top:1rem;inset-inline-start:1rem}}
 @media (min-width:900px){
   .splash{align-items:center}
   .splash-in{max-width:68rem;flex-direction:row;align-items:center;padding:2rem 1.5rem}
@@ -439,11 +447,16 @@ button.seller{width:100%;text-align:right}
 .ltr-in{text-align:right}
 .logo b,.nav-brand b{white-space:nowrap}
 @media (max-width:359px){.home-head .loc-chip{display:none}}
-.lang-picker{position:fixed;top:max(.75rem,env(safe-area-inset-top));left:max(.75rem,env(safe-area-inset-left));z-index:30;display:flex;align-items:center;gap:.4rem;min-height:42px;padding:0 .65rem;border:1px solid rgba(240,214,168,.35);border-radius:12px;background:rgba(40,24,12,.94);color:var(--on-dark);box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.lang-picker{position:static;display:flex;align-items:center;gap:.4rem;min-height:42px;padding:0 .65rem;border:1px solid rgba(240,214,168,.35);border-radius:12px;background:rgba(40,24,12,.55);color:var(--on-dark)}
 .lang-picker .ic{width:1.1rem;height:1.1rem;flex:none;color:var(--gold)}
 .lang-picker select{min-height:40px;max-width:112px;padding:0 .1rem;border:0;outline:0;background:transparent;color:inherit;font:inherit;font-size:.8125rem;font-weight:700;cursor:pointer}
 .lang-picker option{background:#2a190e;color:#fff}
-.head-tools{display:inline-flex;align-items:center}
+@media (max-width:420px){
+  .lang-picker{gap:.2rem;padding-inline:.35rem}
+  .lang-picker .ic{display:none}
+  .lang-picker select{width:4rem;max-width:4rem;padding:0}
+}
+.head-tools{display:inline-flex;align-items:center;gap:.4rem}
 /* نص المستخدم: كسر الكلمات الطويلة، وحفظ الأسطر، واتجاه تلقائي */
 .sheet h1,.block p,.msg,.card h3,.specs dd,.summary dd,.rowlist b,.about-ad,.me b,.seller b{overflow-wrap:anywhere;word-break:break-word;min-width:0}
 .block p,.msg{white-space:pre-line}
@@ -714,14 +727,6 @@ button,.card,.chip,.pill{transition:background-color .15s,color .15s,border-colo
 </head>
 <body>
 <noscript><p class="noscript">يحتاج حراج العلا إلى تفعيل JavaScript في المتصفح حتى يعمل.</p></noscript>
-<label class="lang-picker">
-  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-  <select id="language-select" aria-label="اختر اللغة">
-    <option value="ar">العربية</option>
-    <option value="en">English</option>
-    <option value="ur">اردو</option>
-  </select>
-</label>
 <div class="app" id="app" data-s="splash">
   <div class="app-bg" aria-hidden="true"></div>
   <nav class="nav" id="nav" aria-label="التنقل الرئيسي"></nav>
@@ -1911,8 +1916,15 @@ const catIc=c=>`<svg class="ic cimg" viewBox="0 0 48 48" aria-hidden="true">${CA
 const catBtn=(c,sel)=>`<button class="cat" data-act="${sel===undefined?'cat':c.id==='rent'?'pick-rent':'pick-cat'}" data-id="${c.id}" ${sel!==undefined?`aria-pressed="${sel===c.id}"`:''}>${catIc(c)}<span>${c.name}</span></button>`;
 const catGrid=(sel,limit,includeRent)=>`<div class="cats">${(limit?CATS.slice(0,limit):sel===undefined||includeRent?BROWSE:CATS).map(c=>catBtn(c,sel)).join('')}${limit?`<button class="cat more" data-act="nav" data-id="cats">${ic('layout-grid')}<span>كل الأقسام</span></button>`:''}</div>`;
 const head=(t,more)=>`<div class="sec-head"><h2>${t}</h2>${more?`<button data-act="all">عرض الكل ${ic('chevron-left')}</button>`:''}</div>`;
+const carousel=cards=>`<div class="carousel-wrap"><button class="carousel-arrow" data-act="slide-card" data-dir="left" aria-label="${tr('السابق')}">${ic('chevron-left')}</button><div class="hscroll">${cards}</div><button class="carousel-arrow" data-act="slide-card" data-dir="right" aria-label="${tr('التالي')}">${ic('chevron-right')}</button></div>`;
 const topbar=(title,noBack,attr)=>`<header class="topbar">${noBack?'':`<button class="round-btn" data-act="back" aria-label="رجوع">${ic('chevron-right')}</button>`}<h1${attr||''}>${title}</h1>${noBack?'':'<span class="ghost"></span>'}</header>`;
 const logo=`<div class="logo">${MARK}<div><b>حراج العلا</b></div></div>`;
+const languagePicker=`<label class="lang-picker">
+  <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  <select id="language-select" aria-label="اختر اللغة">
+    <option value="ar">العربية</option><option value="en">English</option><option value="ur">اردو</option>
+  </select>
+</label>`;
 /* بائع لم تصل بياناته بعد (محوّل غير فوري): عرض محايد بلا توثيق */
 const NO_SELLER={user:false,name:'…',rating:null,reviews:0,joined:'',verified:false,biz:false};
 const empty=(t,s,btn)=>`<div class="empty"><b>${t}</b>${s}${btn||''}</div>`;
@@ -1943,7 +1955,7 @@ const opts=(list,val,first)=>(first?`<option value="">${esc(first)}</option>`:''
 const V={};
 V.splash=()=>{
   const pq=readData('listPublic',[],'public'), L=pq.data||[], latest=L.slice().sort((x,y)=>age(x)-age(y)).slice(0,6);   /* عبر طبقة API */
-  return `<section class="splash"><div class="splash-in">
+  return `<section class="splash">${languagePicker}<div class="splash-in">
   <div class="sp-main">${MARK}<h1>حراج العلا</h1><p class="tag">بيع واشترِ من أهل العلا مباشرة</p>
     <form class="search" data-form="search" role="search">${ic('search')}<input name="q" type="search" placeholder="عمّ تبحث؟ سيارة، شقة، جوال..." aria-label="ابحث في حراج العلا"><button aria-label="بحث">${ic('send')}</button></form>
     <p class="sp-stats"><span><b>${pq.data?L.length:'…'}</b>${adsLabel(L.length)}</span><span><b>${BROWSE.length}</b>قسمًا</span><span><b>${PLACES.length}</b>مناطق</span></p>
@@ -1954,7 +1966,7 @@ V.splash=()=>{
   </div>
   <div class="sp-side">
     <div class="splash-cats">${CATS.slice(0,8).map(c=>`<button data-act="cat" data-id="${c.id}">${catIc(c)}<span>${c.name}</span></button>`).join('')}</div>
-    ${head('أحدث الإعلانات',true)}<div class="hscroll">${latest.map(a=>card(a)).join('')}</div>
+    ${head('أحدث الإعلانات',true)}${carousel(latest.map(a=>card(a)).join(''))}
     <div class="perks"><div>${ic('map-pin')}محلي للعلا</div><div>${ic('shield-check')}ثقة وأمان</div><div>${ic('shopping-bag')}بيع بسهولة</div></div>
     <p class="splash-foot">من أهل العلا لأهلها</p>
   </div></div></section>`;};
@@ -1989,15 +2001,15 @@ V.home=()=>{
   const rec=by(a=>['cars','electronics'].indexOf(a.cat)>-1).slice(-5);
   const unread=NOTIFS.some(n=>!n.read);
   return `<header class="home-head">
-    <span class="head-tools"><button class="round-btn bell${unread?' has':''}" data-act="notifs" aria-label="الإشعارات${unread?' (جديدة)':''}">${ic('bell')}</button></span>
     ${logo}
-    <span class="loc-chip">${ic('map-pin')}العلا</span></header>
+    <span class="head-tools">${languagePicker}<button class="round-btn bell${unread?' has':''}" data-act="notifs" aria-label="الإشعارات${unread?' (جديدة)':''}">${ic('bell')}</button></span>
+    </header>
   <form class="search" data-form="search" role="search">${ic('search')}<input name="q" type="search" placeholder="ابحث في حراج العلا" aria-label="ابحث في حراج العلا"></form>
   <div class="hero"><div class="hero-text"><h2 aria-level="1">بيع واشترِ في العلا</h2><p>كل احتياجاتك في مكان واحد</p><button class="hero-cta" data-act="nav" data-id="add">${ic('plus')}أضف إعلانك</button></div></div>
   ${head('الأقسام')}${catGrid(undefined,11)}
-  ${!pq.data?(pq.st==='loading'?loadingBox():errorBox()):`${head('الإعلانات المميزة')}<div class="hscroll">${by(a=>a.featured).map(a=>card(a)).join('')}</div>
+  ${!pq.data?(pq.st==='loading'?loadingBox():errorBox()):`${head('الإعلانات المميزة')}${carousel(by(a=>a.featured).map(a=>card(a)).join(''))}
   ${head('أحدث الإعلانات',true)}<div class="grid2">${latest.map(a=>card(a)).join('')}</div>
-  ${head('إعلانات قريبة منك')}<div class="hscroll">${near.map(a=>card(a)).join('')}</div>
+  ${head('إعلانات قريبة منك')}${carousel(near.map(a=>card(a)).join(''))}
   ${head('مقترحة لك')}<div class="grid2">${rec.map(a=>card(a)).join('')}</div>`}
   <div class="bottom-space"></div>`;
 };
@@ -2067,7 +2079,7 @@ V.detail=()=>{
   <section class="block"><h2>البائع</h2><button class="seller" data-act="seller" data-id="${esc(a.seller)}" data-owner="${esc(a.owner||'')}"><span class="avatar">${esc(ini(s.user?s.name:tr(s.name)))}</span><span class="grow">
     <b${s.user?U:''}>${esc(s.name)}${s.verified?ic('badge-check'):''}</b>${s.biz?'<span class="biz-tag">منشأة موثقة</span>':''}
     <small><span class="star">${ic('star')}${s.rating?s.rating+' ('+s.reviews+' تقييم)':'بلا تقييمات بعد'}</span><span>${ic('calendar')}عضو منذ ${s.joined}</span></small></span>${ic('chevron-left')}</button></section></div></div>
-  ${others.length?`${head('إعلانات البائع الأخرى')}<div class="hscroll">${others.map(x=>card(x)).join('')}</div>`:''}
+  ${others.length?`${head('إعلانات البائع الأخرى')}${carousel(others.map(x=>card(x)).join(''))}`:''}
   <div class="bottom-space"></div>`;
 };
 
@@ -2239,6 +2251,7 @@ function render(){
   const key=fKey(document.activeElement);
   app.setAttribute('data-s',S.screen);
   view.innerHTML=`<div class="page page-${S.screen}">${V[S.screen]()}</div>`;
+  const languageSelect=$('#language-select'); if(languageSelect) languageSelect.value=LANG;
   foot.innerHTML=footer(); nav.innerHTML=navHTML();
   const trk=$('#track'), ct=$('#counter'); if(trk&&ct) trk.addEventListener('scroll',()=>{const n=trk.children.length,i=Math.round(Math.abs(trk.scrollLeft)/trk.clientWidth);ct.textContent=`${Math.min(i+1,n)} / ${n}`;},{passive:true});
   [].forEach.call(view.querySelectorAll('.chips'),ch=>{ const p=ch.querySelector('.chip[aria-pressed="true"]'); if(p&&p!==ch.firstElementChild){ const a=p.getBoundingClientRect(),b=ch.getBoundingClientRect(); ch.scrollLeft+=(a.left+a.width/2)-(b.left+b.width/2); } });
@@ -2269,6 +2282,18 @@ document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]'); if(!el) return; if(el.tagName==='A') e.preventDefault();
   const act=el.dataset.act,id=el.dataset.id,w=S.wiz,l=S.login;
   switch(act){
+    case 'slide-card': {
+      const wrap=el.closest('.carousel-wrap'),strip=wrap&&wrap.querySelector('.hscroll');
+      if(!strip) break;
+      const cards=[].filter.call(strip.children,x=>x.classList.contains('card'));
+      if(cards.length<2) break;
+      const box=strip.getBoundingClientRect(),center=box.left+box.width/2;
+      const ordered=cards.map(x=>({el:x,center:(x.getBoundingClientRect().left+x.getBoundingClientRect().right)/2})).sort((a,b)=>a.center-b.center);
+      let current=0; for(let i=1;i<ordered.length;i++) if(Math.abs(ordered[i].center-center)<Math.abs(ordered[current].center-center)) current=i;
+      const target=ordered[current+(el.dataset.dir==='left'?-1:1)];
+      if(target) target.el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+      break;
+    }
     case 'start': go('home',{root:true}); break;
     case 'login': S.after=null; S.login=newLogin(); go('login'); break;
     case 'login-prev': l.step=0;l.err='';l.code=''; render(); break;

@@ -78,12 +78,6 @@ h1,h2,h3,p{margin:0}
 .sec-head h2{font-size:1.125rem;font-weight:700;text-shadow:0 1px 6px rgba(31,18,10,.7)}
 .sec-head button{font-size:.875rem;color:var(--gold);display:flex;align-items:center}
 .sec-head .ic{width:1rem;height:1rem;margin-right:.1rem}
-.carousel-wrap{position:relative}
-.carousel-arrow{position:absolute;top:50%;z-index:3;display:flex;width:2rem;height:2rem;min-height:40px;align-items:center;justify-content:center;padding:0;border:1px solid rgba(246,226,190,.55);border-radius:50%;background:rgba(40,24,12,.72);color:var(--on-dark);transform:translateY(-50%)}
-.carousel-arrow[data-dir="left"]{left:1.5rem}
-.carousel-arrow[data-dir="right"]{right:1.5rem}
-.carousel-arrow .ic{width:1.1rem;height:1.1rem;margin:0}
-@media (min-width:768px){.carousel-arrow{display:none!important}}
 
 /* ---------- logo ---------- */
 .logo{display:inline-flex;align-items:center;color:var(--gold);text-align:right}
@@ -1916,7 +1910,6 @@ const catIc=c=>`<svg class="ic cimg" viewBox="0 0 48 48" aria-hidden="true">${CA
 const catBtn=(c,sel)=>`<button class="cat" data-act="${sel===undefined?'cat':c.id==='rent'?'pick-rent':'pick-cat'}" data-id="${c.id}" ${sel!==undefined?`aria-pressed="${sel===c.id}"`:''}>${catIc(c)}<span>${c.name}</span></button>`;
 const catGrid=(sel,limit,includeRent)=>`<div class="cats">${(limit?CATS.slice(0,limit):sel===undefined||includeRent?BROWSE:CATS).map(c=>catBtn(c,sel)).join('')}${limit?`<button class="cat more" data-act="nav" data-id="cats">${ic('layout-grid')}<span>كل الأقسام</span></button>`:''}</div>`;
 const head=(t,more)=>`<div class="sec-head"><h2>${t}</h2>${more?`<button data-act="all">عرض الكل ${ic('chevron-left')}</button>`:''}</div>`;
-const carousel=cards=>`<div class="carousel-wrap"><button class="carousel-arrow" data-act="slide-card" data-dir="left" aria-label="${tr('السابق')}">${ic('chevron-left')}</button><div class="hscroll">${cards}</div><button class="carousel-arrow" data-act="slide-card" data-dir="right" aria-label="${tr('التالي')}">${ic('chevron-right')}</button></div>`;
 const topbar=(title,noBack,attr)=>`<header class="topbar">${noBack?'':`<button class="round-btn" data-act="back" aria-label="رجوع">${ic('chevron-right')}</button>`}<h1${attr||''}>${title}</h1>${noBack?'':'<span class="ghost"></span>'}</header>`;
 const logo=`<div class="logo">${MARK}<div><b>حراج العلا</b></div></div>`;
 const languagePicker=`<label class="lang-picker">
@@ -1966,7 +1959,7 @@ V.splash=()=>{
   </div>
   <div class="sp-side">
     <div class="splash-cats">${CATS.slice(0,8).map(c=>`<button data-act="cat" data-id="${c.id}">${catIc(c)}<span>${c.name}</span></button>`).join('')}</div>
-    ${head('أحدث الإعلانات',true)}${carousel(latest.map(a=>card(a)).join(''))}
+    ${head('أحدث الإعلانات',true)}<div class="hscroll">${latest.map(a=>card(a)).join('')}</div>
     <div class="perks"><div>${ic('map-pin')}محلي للعلا</div><div>${ic('shield-check')}ثقة وأمان</div><div>${ic('shopping-bag')}بيع بسهولة</div></div>
     <p class="splash-foot">من أهل العلا لأهلها</p>
   </div></div></section>`;};
@@ -2007,9 +2000,9 @@ V.home=()=>{
   <form class="search" data-form="search" role="search">${ic('search')}<input name="q" type="search" placeholder="ابحث في حراج العلا" aria-label="ابحث في حراج العلا"></form>
   <div class="hero"><div class="hero-text"><h2 aria-level="1">بيع واشترِ في العلا</h2><p>كل احتياجاتك في مكان واحد</p><button class="hero-cta" data-act="nav" data-id="add">${ic('plus')}أضف إعلانك</button></div></div>
   ${head('الأقسام')}${catGrid(undefined,11)}
-  ${!pq.data?(pq.st==='loading'?loadingBox():errorBox()):`${head('الإعلانات المميزة')}${carousel(by(a=>a.featured).map(a=>card(a)).join(''))}
+  ${!pq.data?(pq.st==='loading'?loadingBox():errorBox()):`${head('الإعلانات المميزة')}<div class="hscroll">${by(a=>a.featured).map(a=>card(a)).join('')}</div>
   ${head('أحدث الإعلانات',true)}<div class="grid2">${latest.map(a=>card(a)).join('')}</div>
-  ${head('إعلانات قريبة منك')}${carousel(near.map(a=>card(a)).join(''))}
+  ${head('إعلانات قريبة منك')}<div class="hscroll">${near.map(a=>card(a)).join('')}</div>
   ${head('مقترحة لك')}<div class="grid2">${rec.map(a=>card(a)).join('')}</div>`}
   <div class="bottom-space"></div>`;
 };
@@ -2079,7 +2072,7 @@ V.detail=()=>{
   <section class="block"><h2>البائع</h2><button class="seller" data-act="seller" data-id="${esc(a.seller)}" data-owner="${esc(a.owner||'')}"><span class="avatar">${esc(ini(s.user?s.name:tr(s.name)))}</span><span class="grow">
     <b${s.user?U:''}>${esc(s.name)}${s.verified?ic('badge-check'):''}</b>${s.biz?'<span class="biz-tag">منشأة موثقة</span>':''}
     <small><span class="star">${ic('star')}${s.rating?s.rating+' ('+s.reviews+' تقييم)':'بلا تقييمات بعد'}</span><span>${ic('calendar')}عضو منذ ${s.joined}</span></small></span>${ic('chevron-left')}</button></section></div></div>
-  ${others.length?`${head('إعلانات البائع الأخرى')}${carousel(others.map(x=>card(x)).join(''))}`:''}
+  ${others.length?`${head('إعلانات البائع الأخرى')}<div class="hscroll">${others.map(x=>card(x)).join('')}</div>`:''}
   <div class="bottom-space"></div>`;
 };
 
@@ -2282,18 +2275,6 @@ document.addEventListener('click',e=>{
   const el=e.target.closest('[data-act]'); if(!el) return; if(el.tagName==='A') e.preventDefault();
   const act=el.dataset.act,id=el.dataset.id,w=S.wiz,l=S.login;
   switch(act){
-    case 'slide-card': {
-      const wrap=el.closest('.carousel-wrap'),strip=wrap&&wrap.querySelector('.hscroll');
-      if(!strip) break;
-      const cards=[].filter.call(strip.children,x=>x.classList.contains('card'));
-      if(cards.length<2) break;
-      const box=strip.getBoundingClientRect(),center=box.left+box.width/2;
-      const ordered=cards.map(x=>({el:x,center:(x.getBoundingClientRect().left+x.getBoundingClientRect().right)/2})).sort((a,b)=>a.center-b.center);
-      let current=0; for(let i=1;i<ordered.length;i++) if(Math.abs(ordered[i].center-center)<Math.abs(ordered[current].center-center)) current=i;
-      const target=ordered[current+(el.dataset.dir==='left'?-1:1)];
-      if(target) target.el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
-      break;
-    }
     case 'start': go('home',{root:true}); break;
     case 'login': S.after=null; S.login=newLogin(); go('login'); break;
     case 'login-prev': l.step=0;l.err='';l.code=''; render(); break;
